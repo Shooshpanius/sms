@@ -62,7 +62,7 @@ gem 'magic_encoding'
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+gem 'capistrano' , '~> 2.15'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

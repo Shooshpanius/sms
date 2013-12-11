@@ -19,6 +19,5 @@
 /*.lock
 /Gemfile.lock
 /db/schema.rb
-database.yml
 deploy.rb
 unicorn.rb
