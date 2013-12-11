@@ -14,7 +14,7 @@ class LoginController < ApplicationController
 
     user = User.find_by_login(params[:login])
 
-    if user.nil? or user.password != params[:password]
+    if user.nil? or user.pwd != params[:password]
 
     else
       session[:is_login] = true

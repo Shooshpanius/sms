@@ -13,12 +13,13 @@
 
 
     <% if session[:is_login] %>
-        <ul class="nav pull-right">
+      <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
 
-          <li><a href="#"><i class="icon-user"></i> <%= session[:user_login] %></a></li>
-          <li><button type="button" class="btn pull-right" onclick='logout()'>Выход</button> </li>
+          <li><p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><i class="icon-user"></i> <%= session[:user_login] %></a>&nbsp;</p></li>
+          <li><button type="button" class="btn btn-default navbar-btn" onclick='logout()'>Выход</button></li>
         </ul>
-
+      </div>
 
 
 
