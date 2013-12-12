@@ -1,7 +1,7 @@
 Sms::Application.routes.draw do
 
   resources :login, :path => 'login/(:action)(.:format)'
-  resources :login, :path => 'login/(:action)(.:format)'
+  resources :distribution_file, :path => 'distribution_file/(:action)(.:format)'
 
   root 'main#index'
 
