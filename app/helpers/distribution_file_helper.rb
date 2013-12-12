@@ -1,0 +1,2 @@
+module DistributionFileHelper
+end
