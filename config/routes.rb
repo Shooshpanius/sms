@@ -3,6 +3,7 @@ Sms::Application.routes.draw do
   get "distribution_list/index"
   resources :login, :path => 'login/(:action)(.:format)'
   resources :distribution_file, :path => 'distribution_file/(:action)(.:format)'
+  resources :distribution_list, :path => 'distribution_list/(:action)(.:format)'
 
   root 'main#index'
 
