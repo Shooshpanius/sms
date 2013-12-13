@@ -8,6 +8,10 @@ class DistributionFileController < ApplicationController
 
   end
 
+  def srv_new_file
+
+    render :nothing => true
+  end
 
 
   private
