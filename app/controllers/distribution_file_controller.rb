@@ -15,7 +15,22 @@ class DistributionFileController < ApplicationController
 
     #render text: params
 
-    redirect_to "/distribution_file"
+
+
+    # In this example the model MyFile has_attached_file :attachment
+    @workbook = Spreadsheet.open(params[:inputFile].tempfile)
+
+    # Get the first worksheet in the Excel file
+    @worksheet = @workbook.worksheet(0)
+
+    # It can be a little tricky looping through the rows since the variable
+    # @worksheet.rows often seem to be empty, but this will work:
+
+
+
+    #render text: @worksheet
+
+    #redirect_to "/distribution_file"
 
   end
 
