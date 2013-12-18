@@ -11,26 +11,50 @@ class DistributionFileController < ApplicationController
 
   def srv_new_file
 
-    #render :nothing => true
+    workbook = Spreadsheet.open(params[:inputFile].tempfile)
+    worksheet = workbook.worksheet(0)
 
-    #render text: params
+    file_root = FileRoot.new
+      file_root.user_id = session[:user_id]
+      #file_root.filename = params[:inputFile].tempfile
 
+    file_root.save
 
+    0.upto worksheet.last_row_index do |index|
+      # .row(index) will return the row which is a subclass of Array
+      row = worksheet.row(index)
+      file_string = FileString.new
+      file_string.file_root_id = file_root.id
 
-    # In this example the model MyFile has_attached_file :attachment
-    @workbook = Spreadsheet.open(params[:inputFile].tempfile)
+      file_string.s_00 = row[0]
+      file_string.s_01 = row[1]
+      file_string.s_02 = row[2]
+      file_string.s_03 = row[3]
+      file_string.s_04 = row[4]
+      file_string.s_05 = row[5]
+      file_string.s_06 = row[6]
+      file_string.s_07 = row[7]
+      file_string.s_08 = row[8]
+      file_string.s_09 = row[9]
+      file_string.s_10 = row[10]
+      file_string.s_11 = row[11]
+      file_string.s_12 = row[12]
+      file_string.s_13 = row[13]
+      file_string.s_14 = row[14]
+      file_string.s_15 = row[15]
+      file_string.s_16 = row[16]
+      file_string.s_17 = row[17]
+      file_string.s_18 = row[18]
+      file_string.s_19 = row[19]
+      file_string.s_20 = row[20]
+      file_string.s_21 = row[21]
+      file_string.s_22 = row[22]
+      file_string.s_23 = row[23]
+      file_string.s_24 = row[24]
+      file_string.s_25 = row[25]
 
-    # Get the first worksheet in the Excel file
-    @worksheet = @workbook.worksheet(0)
-
-    # It can be a little tricky looping through the rows since the variable
-    # @worksheet.rows often seem to be empty, but this will work:
-
-
-
-    #render text: @worksheet
-
-    #redirect_to "/distribution_file"
+      file_string.save
+    end
 
   end
 
