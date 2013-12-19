@@ -2,6 +2,86 @@
 <%= javascript_include_tag "distribution_file_edit" %>
 
 
+<%
+    select_text = '
+        <option value=""></option>
+        <option value="s_00">s_00</option>
+        <option value="s_01">s_01</option>
+        <option value="s_02">s_02</option>
+        <option value="s_03">s_03</option>
+        <option value="s_04">s_04</option>
+        <option value="s_05">s_05</option>
+        <option value="s_06">s_06</option>
+        <option value="s_07">s_07</option>
+        <option value="s_08">s_08</option>
+        <option value="s_09">s_09</option>
+        <option value="s_10">s_10</option>
+        <option value="s_11">s_11</option>
+        <option value="s_12">s_12</option>
+        <option value="s_13">s_13</option>
+        <option value="s_14">s_14</option>
+        <option value="s_15">s_15</option>
+        <option value="s_16">s_16</option>
+        <option value="s_17">s_17</option>
+        <option value="s_18">s_18</option>
+        <option value="s_19">s_19</option>
+        <option value="s_20">s_20</option>
+        <option value="s_21">s_21</option>
+        <option value="s_22">s_22</option>
+        <option value="s_23">s_23</option>
+        <option value="s_24">s_24</option>
+        <option value="s_25">s_25</option>
+        </select>'
+%>
+
+<form class="form-horizontal" role="form">
+
+  <div class="form-group">
+    <label for="fio" class="col-sm-2 control-label">ФИО</label>
+    <div class="col-sm-10">
+      <%== '<select name="s_fio" id="s_fio" class="form-control">' %><%== select_text %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dogovor" class="col-sm-2 control-label">Договор</label>
+    <div class="col-sm-10">
+      <%== '<select name="dogovor" id="dogovor" class="form-control">' %><%== select_text %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone" class="col-sm-2 control-label">Телефон</label>
+    <div class="col-sm-10">
+      <%== '<select name="phone" id="phone" class="form-control">' %><%== select_text %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="sum_main" class="col-sm-2 control-label">Общий долг</label>
+    <div class="col-sm-10">
+      <%== '<select name="sum_main" id="sum_main" class="form-control">' %><%== select_text %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="sum_plat" class="col-sm-2 control-label">Расчетный платеж</label>
+    <div class="col-sm-10">
+      <%== '<select name="sum_plat" id="sum_plat" class="form-control">' %><%== select_text %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Создать глобальный лист</button>
+    </div>
+  </div>
+</form>
+
+
+
+
 
 <div class="panel panel-success">
   <div class="panel-heading">Строки файла</div>
