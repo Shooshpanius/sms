@@ -6,6 +6,12 @@ class DistributionFileController < ApplicationController
 
   def index
 
+    my_files = FileRoot.where("user_id = ?", session[:user_id])
+
+    @form_data = {
+        my_files: my_files
+    }
+
 
   end
 
@@ -16,7 +22,7 @@ class DistributionFileController < ApplicationController
 
     file_root = FileRoot.new
       file_root.user_id = session[:user_id]
-      #file_root.filename = params[:inputFile].tempfile
+      file_root.filename = params[:inputFile].original_filename.to_s
 
     file_root.save
 

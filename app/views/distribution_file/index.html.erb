@@ -31,12 +31,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+
+        <% @form_data[:my_files].each.with_index do |file, index| %>
+            <tr>
+              <td><%= index+1 %></td>
+              <td><%= file.filename %></td>
+              <td><%= file.created_at%></td>
+              <td><i class="glyphicon glyphicon-search"></i></td>
+            </tr>
+        <% end %>
+
 
     </tbody>
   </table>
