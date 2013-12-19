@@ -15,6 +15,17 @@ class DistributionFileController < ApplicationController
 
   end
 
+  def edit
+
+
+
+
+  end
+
+
+
+
+
   def srv_new_file
 
     workbook = Spreadsheet.open(params[:inputFile].tempfile)
