@@ -20,7 +20,7 @@ class DistributionFileController < ApplicationController
 
     file_root.save
 
-    0.upto worksheet.last_row_index do |index|
+    0.upto worksheet.last_row_index-1 do |index|
       # .row(index) will return the row which is a subclass of Array
       row = worksheet.row(index)
       file_string = FileString.new
@@ -57,8 +57,9 @@ class DistributionFileController < ApplicationController
 
 
 
-    end
 
+    end
+    redirect_to "/distribution_file"
   end
 
 
