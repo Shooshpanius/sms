@@ -145,7 +145,7 @@
 
     <% @form_data[:file_strings].each.with_index do |file_string, index| %>
         <tr>
-          <td><%= index+1 %></td>
+          <td><%= index+1 %><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button></td>
           <td><%= file_string.s_00 %></td>
           <td><%= file_string.s_01 %></td>
           <td><%= file_string.s_02 %></td>
@@ -173,8 +173,8 @@
           <td><%= file_string.s_24 %></td>
           <td><%= file_string.s_25 %></td>
           <td>
-            <a href="<%= file_string.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-            <button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+
+
           </td>
         </tr>
     <% end %>
