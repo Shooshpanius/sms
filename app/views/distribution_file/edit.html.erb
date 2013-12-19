@@ -1,0 +1,88 @@
+<%= javascript_include_tag "main" %>
+<%= javascript_include_tag "distribution_file_edit" %>
+
+
+
+<div class="panel panel-success">
+  <div class="panel-heading">Строки файла</div>
+
+
+  <table class="table table-bordered table-condensed">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>s_00</th>
+      <th>s_01</th>
+      <th>s_02</th>
+      <th>s_03</th>
+      <th>s_04</th>
+      <th>s_05</th>
+      <th>s_06</th>
+      <th>s_07</th>
+      <th>s_08</th>
+      <th>s_09</th>
+      <th>s_10</th>
+      <th>s_11</th>
+      <th>s_12</th>
+      <th>s_13</th>
+      <th>s_14</th>
+      <th>s_15</th>
+      <th>s_16</th>
+      <th>s_17</th>
+      <th>s_18</th>
+      <th>s_19</th>
+      <th>s_20</th>
+      <th>s_21</th>
+      <th>s_22</th>
+      <th>s_23</th>
+      <th>s_24</th>
+      <th>s_25</th>
+
+      <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% @form_data[:file_strings].each.with_index do |file_string, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= file_string.s_00 %></td>
+          <td><%= file_string.s_01 %></td>
+          <td><%= file_string.s_02 %></td>
+          <td><%= file_string.s_03 %></td>
+          <td><%= file_string.s_04 %></td>
+          <td><%= file_string.s_05 %></td>
+          <td><%= file_string.s_06 %></td>
+          <td><%= file_string.s_07 %></td>
+          <td><%= file_string.s_08 %></td>
+          <td><%= file_string.s_09 %></td>
+          <td><%= file_string.s_10 %></td>
+          <td><%= file_string.s_11 %></td>
+          <td><%= file_string.s_12 %></td>
+          <td><%= file_string.s_13 %></td>
+          <td><%= file_string.s_14 %></td>
+          <td><%= file_string.s_15 %></td>
+          <td><%= file_string.s_16 %></td>
+          <td><%= file_string.s_17 %></td>
+          <td><%= file_string.s_18 %></td>
+          <td><%= file_string.s_19 %></td>
+          <td><%= file_string.s_20 %></td>
+          <td><%= file_string.s_21 %></td>
+          <td><%= file_string.s_22 %></td>
+          <td><%= file_string.s_23 %></td>
+          <td><%= file_string.s_24 %></td>
+          <td><%= file_string.s_25 %></td>
+          <td>
+            <a href="<%= file_string.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+            <button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+          </td>
+        </tr>
+    <% end %>
+
+
+    </tbody>
+  </table>
+
+
+</div>
+

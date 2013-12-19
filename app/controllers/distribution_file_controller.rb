@@ -16,9 +16,12 @@ class DistributionFileController < ApplicationController
   end
 
   def edit
+    file_id = params[:id]
+    file_strings = FileString.get_strings(file_id, session[:user_id])
 
-
-
+    @form_data = {
+        file_strings: file_strings
+    }
 
   end
 
