@@ -25,6 +25,12 @@ class DistributionFileController < ApplicationController
 
   end
 
+  def delete
+    file_id = params[:id]
+    file_strings = FileRoot.try_delete(file_id, session[:user_id])
+    redirect_to "/distribution_file"
+  end
+
 
 
   def srv_file_to_delivery
