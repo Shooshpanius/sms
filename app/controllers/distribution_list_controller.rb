@@ -6,6 +6,11 @@ class DistributionListController < ApplicationController
 
   def index
 
+    my_lists = ListRoot.where("user_id = ?", session[:user_id])
+
+    @form_data = {
+        my_lists: my_lists
+    }
 
   end
 
@@ -18,7 +23,7 @@ class DistributionListController < ApplicationController
 
       list_root = ListRoot.new
         list_root.user_id = session[:user_id]
-        if params[:list_name] = ""
+        if params[:list_name].size == 0
           list_root.name = file_root.filename
         else
           list_root.name = params[:list_name]
