@@ -8,9 +8,9 @@ class FileString < ActiveRecord::Base
   end
 
 
-  def FileString.add_strings_from_file(file_root_id, params, file_strings)
+  def FileString.add_strings_from_file(list_root_id, params, file_strings)
 
-    file_strings.each.with_index do |file_string, index|
+    file_strings.each do |file_string|
 
       case params[:s_fio]
         when 's_00'
@@ -300,10 +300,8 @@ class FileString < ActiveRecord::Base
       end
 
 
-
-
-
       new_file_string = FileString.new
+      new_file_string.list_root_id = list_root_id
       new_file_string.fio = s_fio
       new_file_string.dogovor = dogovor
       new_file_string.summa = 	sum_plat

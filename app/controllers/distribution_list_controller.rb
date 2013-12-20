@@ -24,13 +24,9 @@ class DistributionListController < ApplicationController
 
 
     file_strings = FileString.where("file_root_id = ?", file_root.id)
-    ListString.add_strings_from_file(file_root.id, params, file_strings)
-
-    file_strings.each.with_index do |file_string, index|
+    ListString.add_strings_from_file(list_root.id, params, file_strings)
 
 
-
-    end
 
     render :nothing => true
   end
