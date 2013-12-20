@@ -21,10 +21,10 @@ class DistributionListController < ApplicationController
       list_root.user_id = session[:user_id]
       list_root.name = file_root.filename
     list_root.save
-
+    list_root_id = list_root.id
 
     file_strings = FileString.where("file_root_id = ?", file_root.id)
-    ListString.add_strings_from_file(list_root.id, params, file_strings)
+    ListString.add_strings_from_file(list_root_id, params, file_strings)
 
 
 
