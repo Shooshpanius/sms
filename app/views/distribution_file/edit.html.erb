@@ -36,6 +36,13 @@
 
 <form class="form-horizontal" role="form" id="filter_form" name="filter_form">
 
+  <div class="form-group hidden">
+    <label for="file_id" class="col-sm-2 control-label">file_id</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="file_id" id="file_id" value="<%= @form_data[:file_id] %>">
+    </div>
+  </div>
+
   <div class="form-group">
     <label for="fio" class="col-sm-2 control-label">ФИО</label>
     <div class="col-sm-10">

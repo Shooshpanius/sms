@@ -10,6 +10,11 @@ class DistributionListController < ApplicationController
   end
 
 
+  def srv_file_to_list
+
+    render :nothing => true
+  end
+
 
   private
   def is_login

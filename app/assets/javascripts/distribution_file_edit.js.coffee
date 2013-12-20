@@ -33,7 +33,7 @@ $(document).ready ($) ->
     submitHandler: (form) ->
       queryString = $("#filter_form").serialize()
       $.ajax
-        url: "/distribution_file/srv_file_to_delivery"
+        url: "/distribution_list/srv_file_to_list"
         type: "POST"
         async: false
         data: queryString

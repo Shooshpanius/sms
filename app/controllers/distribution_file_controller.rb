@@ -20,7 +20,8 @@ class DistributionFileController < ApplicationController
     file_strings = FileString.get_strings(file_id, session[:user_id])
 
     @form_data = {
-        file_strings: file_strings
+        file_strings: file_strings,
+        file_id: file_id
     }
 
   end
@@ -33,10 +34,7 @@ class DistributionFileController < ApplicationController
 
 
 
-  def srv_file_to_delivery
 
-    render :nothing => true
-  end
 
 
   def srv_new_file
