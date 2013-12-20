@@ -356,6 +356,64 @@ class ListString < ActiveRecord::Base
           oplata_date = ""
       end
 
+      if params[:filter_agent].size > 0 and params[:filter_agent_text].size > 0
+        case params[:filter_agent]
+          when 's_00'
+            filter_agent_text = file_string.s_00
+          when 's_01'
+            filter_agent_text = file_string.s_01
+          when 's_02'
+            filter_agent_text = file_string.s_02
+          when 's_03'
+            filter_agent_text = file_string.s_03
+          when 's_04'
+            filter_agent_text = file_string.s_04
+          when 's_05'
+            filter_agent_text = file_string.s_05
+          when 's_06'
+            filter_agent_text = file_string.s_06
+          when 's_07'
+            filter_agent_text = file_string.s_07
+          when 's_08'
+            filter_agent_text = file_string.s_08
+          when 's_09'
+            filter_agent_text = file_string.s_09
+          when 's_10'
+            filter_agent_text = file_string.s_10
+          when 's_11'
+            filter_agent_text = file_string.s_11
+          when 's_12'
+            filter_agent_text = file_string.s_12
+          when 's_13'
+            filter_agent_text = file_string.s_13
+          when 's_14'
+            filter_agent_text = file_string.s_14
+          when 's_15'
+            filter_agent_text = file_string.s_15
+          when 's_16'
+            filter_agent_text = file_string.s_16
+          when 's_17'
+            filter_agent_text = file_string.s_17
+          when 's_18'
+            filter_agent_text = file_string.s_18
+          when 's_19'
+            filter_agent_text = file_string.s_19
+          when 's_20'
+            filter_agent_text = file_string.s_20
+          when 's_21'
+            filter_agent_text = file_string.s_21
+          when 's_22'
+            filter_agent_text = file_string.s_22
+          when 's_23'
+            filter_agent_text = file_string.s_23
+          when 's_24'
+            filter_agent_text = file_string.s_24
+          when 's_25'
+            filter_agent_text = file_string.s_25
+          else
+            filter_agent_text = ""
+        end
+      end
 
       new_file_string = ListString.new
       new_file_string.list_root_id = list_root_id
@@ -369,7 +427,8 @@ class ListString < ActiveRecord::Base
       new_file_string.updated_at = DateTime.now
 
 
-      if sum_plat.to_i > 0 and sum_main.to_i > 0
+      if (sum_plat.to_i > 0 and sum_main.to_i > 0) and
+          ( (filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent]) or (filter_agent_text.size == 0) )
         new_file_string.save
       end
 
