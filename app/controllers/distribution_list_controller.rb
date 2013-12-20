@@ -41,7 +41,7 @@ class DistributionListController < ApplicationController
   private
   def is_login
     if !session[:is_login]
-      redirect_to "/login"
+      redirect_to '/login'
     end
   end
 
