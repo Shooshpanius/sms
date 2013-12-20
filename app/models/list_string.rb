@@ -369,8 +369,10 @@ class ListString < ActiveRecord::Base
       new_file_string.updated_at = DateTime.now
 
 
+      if sum_plat.to_i > 0 and sum_main.to_i > 0
+        new_file_string.save
+      end
 
-      new_file_string.save
 
     end
 
