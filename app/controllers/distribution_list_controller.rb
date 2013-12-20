@@ -14,7 +14,7 @@ class DistributionListController < ApplicationController
 
     file_root = FileRoot.find(params[:file_id])
 
-    if file_root.user_id = user_id
+    if file_root.user_id == session[:user_id]
 
       list_root = ListRoot.new
         list_root.user_id = session[:user_id]
