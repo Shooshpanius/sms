@@ -23,11 +23,7 @@ class DistributionListController < ApplicationController
 
       list_root = ListRoot.new
         list_root.user_id = session[:user_id]
-        if params[:list_name].size == 0
-          list_root.name = file_root.filename
-        else
-          list_root.name = params[:list_name]
-        end
+      (params[:list_name].size == 0) ? list_root.name = file_root.filename : list_root.name = params[:list_name]
       list_root.save
 
       list_root_id = list_root.id
