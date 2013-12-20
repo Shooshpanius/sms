@@ -356,6 +356,7 @@ class ListString < ActiveRecord::Base
           oplata_date = ""
       end
 
+      filter_agent_text = ""
       if params[:filter_agent].size > 0 and params[:filter_agent_text].size > 0
         case params[:filter_agent]
           when 's_00'
@@ -428,7 +429,7 @@ class ListString < ActiveRecord::Base
 
 
       if (sum_plat.to_i > 0 and sum_main.to_i > 0) and
-          ( (filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent]) or (filter_agent_text.size == 0) )
+          ( (filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]) or (filter_agent_text.size == 0) )
         new_file_string.save
       end
 
