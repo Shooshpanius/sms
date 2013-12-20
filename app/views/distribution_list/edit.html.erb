@@ -19,7 +19,24 @@
       <th>Сумма долга</th>
       <th>Дата оплаты</th>
       <th>Телефон</th>
+      <th>Действия</th>
 
+      <% @form_data[:list_strings].each.with_index do |list_string, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= list_string.fio %></td>
+          <td><%= list_string.dogovor %></td>
+          <td><%= list_string.summa %></td>
+          <td><%= list_string.summa_dolg %></td>
+          <td><%= list_string.oplata_date %></td>
+          <td><%= list_string.phone %></td>
+          <td><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button></td>
+
+
+
+
+        </tr>
+    <% end %>
 
       <th>Действия</th>
     </tr>
