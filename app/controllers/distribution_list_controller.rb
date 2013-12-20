@@ -6,13 +6,31 @@ class DistributionListController < ApplicationController
 
   def index
 
-    my_lists = ListRoot.where("user_id = ?", session[:user_id])
+    my_lists = ListRoot.where('user_id = ?', session[:user_id])
 
     @form_data = {
         my_lists: my_lists
     }
 
   end
+
+  def delete
+    list_id = params[:id]
+    ListRoot.try_delete(list_id, session[:user_id])
+    redirect_to '/distribution_list'
+  end
+
+
+  def edit
+    list_id = params[:id]
+    list_strings = ListString.get_strings(list_id, session[:user_id])
+
+    @form_data = {
+        list_strings: list_strings,
+        list_id: list_id
+    }
+  end
+
 
 
   def srv_file_to_list
@@ -28,7 +46,7 @@ class DistributionListController < ApplicationController
 
       list_root_id = list_root.id
 
-      file_strings = FileString.where("file_root_id = ?", file_root.id)
+      file_strings = FileString.where('file_root_id = ?', file_root.id)
       ListString.add_strings_from_file(list_root_id, params, file_strings)
 
     end

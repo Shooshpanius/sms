@@ -1,7 +1,12 @@
 class ListString < ActiveRecord::Base
 
 
-
+  def ListString.get_strings(list_id, user_id)
+    if ListRoot.find(list_id).user_id == user_id
+      strings = ListString.where("list_root_id = ?", list_id)
+    end
+    return strings
+  end
 
   def ListString.add_strings_from_file(list_root_id, params, file_strings)
 
