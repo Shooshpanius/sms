@@ -14,19 +14,23 @@ class DistributionListController < ApplicationController
 
     file_root = FileRoot.find(params[:file_id])
 
-    list_root = ListRoot.new
-      list_root.user_id = session[:user_id]
-      if params[:list_name] = ""
-        list_root.name = file_root.filename
-      else
-        list_root.name = params[:list_name]
-      end
-    list_root.save
+    if file_root.user_id = user_id
 
-    list_root_id = list_root.id
+      list_root = ListRoot.new
+        list_root.user_id = session[:user_id]
+        if params[:list_name] = ""
+          list_root.name = file_root.filename
+        else
+          list_root.name = params[:list_name]
+        end
+      list_root.save
 
-    file_strings = FileString.where("file_root_id = ?", file_root.id)
-    ListString.add_strings_from_file(list_root_id, params, file_strings)
+      list_root_id = list_root.id
+
+      file_strings = FileString.where("file_root_id = ?", file_root.id)
+      ListString.add_strings_from_file(list_root_id, params, file_strings)
+
+    end
 
     render :nothing => true
 
