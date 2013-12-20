@@ -12,6 +12,26 @@ class DistributionListController < ApplicationController
 
   def srv_file_to_list
 
+
+
+
+    file_root = FileRoot.find(params[:file_id])
+
+    list_root = ListRoot.new
+      list_root.user_id = session[:user_id]
+      list_root.name = file_root.filename
+    list_root.save
+
+
+    file_strings = FileString.where("file_root_id = ?", file_root.id)
+    ListString.add_strings_from_file(file_root.id, params, file_strings)
+
+    file_strings.each.with_index do |file_string, index|
+
+
+
+    end
+
     render :nothing => true
   end
 
