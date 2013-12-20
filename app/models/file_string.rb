@@ -300,6 +300,8 @@ class FileString < ActiveRecord::Base
       end
 
 
+
+
       new_file_string = FileString.new
       new_file_string.list_root_id = list_root_id
       new_file_string.fio = s_fio
@@ -308,8 +310,8 @@ class FileString < ActiveRecord::Base
       new_file_string.summa_dolg = sum_main
       new_file_string.oplata_date = oplata_date
       new_file_string.phone = phone
-      new_file_string.created_at = created_at
-      new_file_string.updated_at = updated_at
+      new_file_string.created_at = DateTime.now
+      new_file_string.updated_at = DateTime.now
 
 
 
