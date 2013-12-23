@@ -5,7 +5,7 @@
   $.ajax
     url: "/distribution_file/srv_save_settings"
     type: "POST"
-    async: false
+#    async: false
     data: queryString
     success: () ->
       $("#myModalSave").modal 'show'
@@ -48,7 +48,7 @@
       $.ajax
         url: "/distribution_list/srv_file_to_list"
         type: "POST"
-        async: false
+#        async: false
         data: queryString
         beforeSend: () ->
           $("#myModalListLoad").modal 'show'
