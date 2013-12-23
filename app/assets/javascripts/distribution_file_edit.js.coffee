@@ -50,7 +50,10 @@
         type: "POST"
         async: false
         data: queryString
-        success: (msg) ->
-          location.reload()
+        beforeSend: () ->
+          $("#myModalListLoad").modal 'show'
+        success: () ->
+          $("#myModalList").modal 'show'
+          $("#myModalListLoad").modal 'hide'
 
       false
