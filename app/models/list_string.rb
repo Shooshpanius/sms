@@ -428,11 +428,15 @@ class ListString < ActiveRecord::Base
       new_file_string.updated_at = DateTime.now
 
 
-      if (sum_plat.to_i > 0 and sum_main.to_i > 0) and
+      if
           ( (filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]) or (filter_agent_text.size == 0) )
         new_file_string.save
       end
 
+      #if (sum_plat.to_i > 0 and sum_main.to_i > 0) and
+      #    ( (filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]) or (filter_agent_text.size == 0) )
+      #  new_file_string.save
+      #end
 
     end
 

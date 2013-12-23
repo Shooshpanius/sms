@@ -14,9 +14,11 @@ class DistributionFileController < ApplicationController
   def edit
     file_id = params[:id]
     file_strings = FileString.get_strings(file_id, session[:user_id])
+    settings = FileFilterSetting.where("user_id = ?", session[:user_id])
     @form_data = {
         file_strings: file_strings,
-        file_id: file_id
+        file_id: file_id,
+        settings: settings
     }
   end
 
