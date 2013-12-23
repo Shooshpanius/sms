@@ -1,5 +1,15 @@
 
 
+@save_settings = ->
+  queryString = $("#filter_form").serialize()
+  $.ajax
+    url: "/distribution_file/srv_save_settings"
+    type: "POST"
+    async: false
+    data: queryString
+    success: () ->
+      location.replace "/"
+
 $(document).ready ($) ->
   $("#filter_form").validate
     rules:

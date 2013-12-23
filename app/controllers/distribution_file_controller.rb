@@ -5,25 +5,19 @@ class DistributionFileController < ApplicationController
 
 
   def index
-
     my_files = FileRoot.where("user_id = ?", session[:user_id])
-
     @form_data = {
         my_files: my_files
     }
-
-
   end
 
   def edit
     file_id = params[:id]
     file_strings = FileString.get_strings(file_id, session[:user_id])
-
     @form_data = {
         file_strings: file_strings,
         file_id: file_id
     }
-
   end
 
   def delete
@@ -32,7 +26,15 @@ class DistributionFileController < ApplicationController
     redirect_to "/distribution_file"
   end
 
+  def srv_save_settings
 
+    filter = params
+
+    render :nothing => true
+    #file_id = params[:id]
+    #FileRoot.try_delete(file_id, session[:user_id])
+    #redirect_to "/distribution_file"
+  end
 
 
 
