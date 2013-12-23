@@ -8,9 +8,12 @@
     async: false
     data: queryString
     success: () ->
-      location.replace "/"
+      $("#myModalSave").modal 'show'
+  false
 
-$(document).ready ($) ->
+
+
+@create_list = ->
   $("#filter_form").validate
     rules:
       s_fio:

@@ -28,7 +28,36 @@ class DistributionFileController < ApplicationController
 
   def srv_save_settings
 
-    filter = params
+    settings = FileFilterSetting.where("user_id = ?", session[:user_id])
+
+    (settings.size == 0) ?
+        FileFilterSetting.create(:user_id => session[:user_id],
+                                 :s_fio => params[:s_fio],
+                                 :dogovor => params[:dogovor],
+                                 :phone => params[:phone],
+                                 :sum_main => params[:sum_main],
+                                 :sum_plat => params[:sum_plat],
+                                 :addr => params[:addr],
+                                 :contact => params[:contact],
+                                 :filter_agent => params[:filter_agent],
+                                 :filter_agent_text => params[:filter_agent_text]
+        ) :
+        FileFilterSetting.update(settings[0].id,
+                                 :s_fio => params[:s_fio],
+                                 :dogovor => params[:dogovor],
+                                 :phone => params[:phone],
+                                 :sum_main => params[:sum_main],
+                                 :sum_plat => params[:sum_plat],
+                                 :addr => params[:addr],
+                                 :contact => params[:contact],
+                                 :filter_agent => params[:filter_agent],
+                                 :filter_agent_text => params[:filter_agent_text]
+        )
+
+
+    #FileFilterSetting.update(params)
+
+    #filter = params
 
     render :nothing => true
     #file_id = params[:id]
