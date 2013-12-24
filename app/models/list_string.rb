@@ -413,7 +413,7 @@ class ListString < ActiveRecord::Base
           when 's_25'
             filter_agent_text = file_string.s_25
           else
-            filter_agent_text = ""
+            filter_agent_text = ''
         end
       end
 
