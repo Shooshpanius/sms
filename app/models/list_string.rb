@@ -2,8 +2,9 @@ class ListString < ActiveRecord::Base
 
 
   def ListString.get_strings(list_id, user_id)
+    strings = []
     if ListRoot.find(list_id).user_id == user_id
-      strings = ListString.where("list_root_id = ?", list_id)
+      strings = ListString.where('list_root_id = ?', list_id)
     end
     return strings
   end
@@ -66,7 +67,7 @@ class ListString < ActiveRecord::Base
         when 's_25'
           s_fio = file_string.s_25
         else
-          s_fio = null
+          s_fio = ''
       end
 
 
@@ -124,7 +125,7 @@ class ListString < ActiveRecord::Base
         when 's_25'
           dogovor = file_string.s_25
         else
-          dogovor = null
+          dogovor = ''
       end
 
 
@@ -182,7 +183,7 @@ class ListString < ActiveRecord::Base
         when 's_25'
           phone = file_string.s_25
         else
-          phone = null
+          phone = ''
       end
 
       case params[:sum_main]
@@ -239,7 +240,7 @@ class ListString < ActiveRecord::Base
         when 's_25'
           sum_main = file_string.s_25
         else
-          sum_main = null
+          sum_main = ''
       end
 
       case params[:sum_plat]
@@ -296,7 +297,7 @@ class ListString < ActiveRecord::Base
         when 's_25'
           sum_plat = file_string.s_25
         else
-          sum_plat = null
+          sum_plat = ''
       end
 
       case params[:oplata_date]
@@ -353,10 +354,10 @@ class ListString < ActiveRecord::Base
         when 's_25'
           oplata_date = file_string.s_25
         else
-          oplata_date = ""
+          oplata_date = ''
       end
 
-      filter_agent_text = ""
+      filter_agent_text = ''
       if params[:filter_agent].size > 0 and params[:filter_agent_text].size > 0
         case params[:filter_agent]
           when 's_00'
@@ -428,8 +429,7 @@ class ListString < ActiveRecord::Base
       new_file_string.updated_at = DateTime.now
 
 
-      if
-          ( (filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]) or (filter_agent_text.size == 0) )
+      if filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]
         new_file_string.save
       end
 
