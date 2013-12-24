@@ -3,8 +3,11 @@ class ClientController < ApplicationController
 
     id = params[:id]
 
+    clients = Client.where('user_id = ?', session[:user_id])
+
     @form_data = {
-        id: id
+        id: id,
+        clients: clients
     }
 
   end
