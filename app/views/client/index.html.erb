@@ -48,6 +48,7 @@
         <th class="col-md-1">#</th>
         <th>ФИО</th>
         <th>Адрес</th>
+        <th>Телефоны</th>
         <th class="col-md-1">Действия</th>
       </tr>
       </thead>
@@ -58,6 +59,7 @@
             <td><%= client.dogovor %></td>
             <td><%= client.fio %></td>
             <td><%= client.adress%></td>
+            <td></td>
             <td>
               <a href="/client/edit/<%= client.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
               <a href="/client/delete/<%= client.id %>" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
