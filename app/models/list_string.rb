@@ -556,7 +556,13 @@ class ListString < ActiveRecord::Base
 
 
         else
-
+          Client.update(
+              client[0].id,
+              :user_id => user_id,
+              :fio => s_fio,
+              :dogovor => dogovor,
+              :adress => addr
+          )
 
         end
 
