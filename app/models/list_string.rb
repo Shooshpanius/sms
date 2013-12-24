@@ -534,7 +534,7 @@ class ListString < ActiveRecord::Base
       end
 
 
-      if filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]
+      if  (filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]) or (filter_agent_text.size == 0)
         ListString.create(
             :list_root_id => list_root_id,
             :fio => s_fio,
@@ -547,13 +547,14 @@ class ListString < ActiveRecord::Base
 
         client = Client.where('dogovor = ?', dogovor)
         if client.size == 0
-          Client.create(
+          client_id =  Client.create(
             :user_id => user_id,
             :fio => s_fio,
             :dogovor => dogovor,
             :adress => addr
           )
-
+          phone_array = phone.scan(/[[:word:]]+/)
+          ClientPhone.update_phones(phone_array, client_id, user_id)
 
         else
           Client.update(
@@ -563,6 +564,8 @@ class ListString < ActiveRecord::Base
               :dogovor => dogovor,
               :adress => addr
           )
+          phone_array = phone.scan(/[[:word:]]+/)
+          ClientPhone.update_phones(phone_array, client[0].id, user_id)
 
         end
 
