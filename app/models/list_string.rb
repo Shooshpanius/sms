@@ -542,10 +542,25 @@ class ListString < ActiveRecord::Base
             :summa => summa,
             :summa_dolg => summa_dolg,
             :oplata_date => oplata_date,
-            :phone => phone,
-            :created_at => DateTime.now,
-            :updated_at => DateTime.now
+            :phone => phone
         )
+
+        client = Client.where('dogovor = ?', dogovor)
+        if client.size == 0
+          Client.create(
+            :user_id => user_id,
+            :fio => s_fio,
+            :dogovor => dogovor,
+            :adress => addr
+          )
+
+
+        else
+
+
+        end
+
+
       end
 
       #if (sum_plat.to_i > 0 and sum_main.to_i > 0) and
