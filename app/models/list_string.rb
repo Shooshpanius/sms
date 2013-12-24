@@ -357,6 +357,122 @@ class ListString < ActiveRecord::Base
           oplata_date = ''
       end
 
+      case params[:addr]
+        when 's_00'
+          addr = file_string.s_00
+        when 's_01'
+          addr = file_string.s_01
+        when 's_02'
+          addr = file_string.s_02
+        when 's_03'
+          addr = file_string.s_03
+        when 's_04'
+          addr = file_string.s_04
+        when 's_05'
+          addr = file_string.s_05
+        when 's_06'
+          addr = file_string.s_06
+        when 's_07'
+          addr = file_string.s_07
+        when 's_08'
+          addr = file_string.s_08
+        when 's_09'
+          addr = file_string.s_09
+        when 's_10'
+          addr = file_string.s_10
+        when 's_11'
+          addr = file_string.s_11
+        when 's_12'
+          addr = file_string.s_12
+        when 's_13'
+          addr = file_string.s_13
+        when 's_14'
+          addr = file_string.s_14
+        when 's_15'
+          addr = file_string.s_15
+        when 's_16'
+          addr = file_string.s_16
+        when 's_17'
+          addr = file_string.s_17
+        when 's_18'
+          addr = file_string.s_18
+        when 's_19'
+          addr = file_string.s_19
+        when 's_20'
+          addr = file_string.s_20
+        when 's_21'
+          addr = file_string.s_21
+        when 's_22'
+          addr = file_string.s_22
+        when 's_23'
+          addr = file_string.s_23
+        when 's_24'
+          addr = file_string.s_24
+        when 's_25'
+          addr = file_string.s_25
+        else
+          addr = ''
+      end
+
+      case params[:contact]
+        when 's_00'
+          contact = file_string.s_00
+        when 's_01'
+          contact = file_string.s_01
+        when 's_02'
+          contact = file_string.s_02
+        when 's_03'
+          contact = file_string.s_03
+        when 's_04'
+          contact = file_string.s_04
+        when 's_05'
+          contact = file_string.s_05
+        when 's_06'
+          contact = file_string.s_06
+        when 's_07'
+          contact = file_string.s_07
+        when 's_08'
+          contact = file_string.s_08
+        when 's_09'
+          contact = file_string.s_09
+        when 's_10'
+          contact = file_string.s_10
+        when 's_11'
+          contact = file_string.s_11
+        when 's_12'
+          contact = file_string.s_12
+        when 's_13'
+          contact = file_string.s_13
+        when 's_14'
+          contact = file_string.s_14
+        when 's_15'
+          contact = file_string.s_15
+        when 's_16'
+          contact = file_string.s_16
+        when 's_17'
+          contact = file_string.s_17
+        when 's_18'
+          contact = file_string.s_18
+        when 's_19'
+          contact = file_string.s_19
+        when 's_20'
+          contact = file_string.s_20
+        when 's_21'
+          contact = file_string.s_21
+        when 's_22'
+          contact = file_string.s_22
+        when 's_23'
+          contact = file_string.s_23
+        when 's_24'
+          contact = file_string.s_24
+        when 's_25'
+          contact = file_string.s_25
+        else
+          contact = ''
+      end
+
+
+
       filter_agent_text = ''
       if params[:filter_agent].size > 0 and params[:filter_agent_text].size > 0
         case params[:filter_agent]
@@ -417,20 +533,19 @@ class ListString < ActiveRecord::Base
         end
       end
 
-      new_file_string = ListString.new
-      new_file_string.list_root_id = list_root_id
-      new_file_string.fio = s_fio
-      new_file_string.dogovor = dogovor
-      new_file_string.summa = 	sum_plat
-      new_file_string.summa_dolg = sum_main
-      new_file_string.oplata_date = oplata_date
-      new_file_string.phone = phone
-      new_file_string.created_at = DateTime.now
-      new_file_string.updated_at = DateTime.now
-
 
       if filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]
-        new_file_string.save
+        ListString.create(
+            :list_root_id => list_root_id,
+            :fio => s_fio,
+            :dogovor => dogovor,
+            :summa => summa,
+            :summa_dolg => summa_dolg,
+            :oplata_date => oplata_date,
+            :phone => phone,
+            :created_at => DateTime.now,
+            :updated_at => DateTime.now
+        )
       end
 
       #if (sum_plat.to_i > 0 and sum_main.to_i > 0) and
