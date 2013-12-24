@@ -62,6 +62,8 @@
             ['s_24', 's_24'],
             ['s_25', 's_25'],
     ]
+
+   if @form_data[:settings].size > 0
     s_fio =  @form_data[:settings][0].s_fio.to_s
     dogovor = @form_data[:settings][0].dogovor.to_s
     phone = @form_data[:settings][0].phone.to_s
@@ -71,6 +73,18 @@
     contact = @form_data[:settings][0].contact.to_s
     filter_agent = @form_data[:settings][0].filter_agent.to_s
     filter_agent_text = @form_data[:settings][0].filter_agent_text.to_s
+   else
+     s_fio =  ""
+     dogovor = ""
+     phone = ""
+     sum_main = ""
+     sum_plat = ""
+     addr = ""
+     contact = ""
+     filter_agent = ""
+     filter_agent_text = ""
+
+   end
 
 %>
 
