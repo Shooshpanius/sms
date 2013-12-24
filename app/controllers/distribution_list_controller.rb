@@ -47,7 +47,7 @@ class DistributionListController < ApplicationController
       list_root_id = list_root.id
 
       file_strings = FileString.where('file_root_id = ?', file_root.id)
-      ListString.add_strings_from_file(list_root_id, params, file_strings)
+      ListString.add_strings_from_file(list_root_id, params, file_strings, session[:user_id])
 
     end
 

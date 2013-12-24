@@ -9,7 +9,7 @@ class ListString < ActiveRecord::Base
     return strings
   end
 
-  def ListString.add_strings_from_file(list_root_id, params, file_strings)
+  def ListString.add_strings_from_file(list_root_id, params, file_strings, user_id)
 
     file_strings.each do |file_string|
 
@@ -539,8 +539,8 @@ class ListString < ActiveRecord::Base
             :list_root_id => list_root_id,
             :fio => s_fio,
             :dogovor => dogovor,
-            :summa => summa,
-            :summa_dolg => summa_dolg,
+            :summa => sum_plat,
+            :summa_dolg => sum_main,
             :oplata_date => oplata_date,
             :phone => phone
         )
