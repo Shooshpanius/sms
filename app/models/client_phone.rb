@@ -2,10 +2,33 @@ class ClientPhone < ActiveRecord::Base
 
   def ClientPhone.update_phones(phone_array, client_id, user_id)
 
+    phone_array.each do |phone|
+      client_phone = ClientPhone.where('client_id = ? and phone = ?', client_id, phone)
+
+      case phone_type
+        when phone[0] == '9'
+          phone_type = 1
+        else
+          phone_type = 2
+      end
+
+      if client_phone == nil
+        ClientPhone.create(
+          :client_id => client_id,
+          :phone => phone,
+          :phone_type => phone_type
+        )
+      else
+        ClientPhone.update(
+            client_phone[0].id,
+            :client_id => client_id,
+            :phone => phone,
+            :phone_type => phone_type
+        )
+      end
 
 
-
-
+    end
 
   end
 
