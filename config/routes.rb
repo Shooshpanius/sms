@@ -4,6 +4,7 @@ Sms::Application.routes.draw do
   resources :login, :path => 'login/(:action)(.:format)'
   resources :distribution_file, :path => 'distribution_file/(:action)(.:format)'
   resources :distribution_list, :path => 'distribution_list/(:action)(.:format)'
+  resources :client, :path => 'client/(:action)(.:format)'
 
   root 'main#index'
 
