@@ -55,7 +55,7 @@
 
       <% @form_data[:clients].each.with_index do |client, index| %>
           <tr>
-            <td><%= index+1 %></td>
+            <td><%= client.dogovor %></td>
             <td><%= client.fio %></td>
             <td><%= client.adress%></td>
             <td>
