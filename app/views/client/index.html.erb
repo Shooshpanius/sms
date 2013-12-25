@@ -55,11 +55,11 @@
       <tbody>
 
       <% @form_data[:clients].each.with_index do |client, index| %>
-          <tr>
+          <tr id="<%= client.id %>">
             <td><%= client.dogovor %></td>
             <td><%= client.fio %></td>
             <td><%= client.adress%></td>
-            <td></td>
+            <td><%= client.client_phones.all %></td>
             <td>
               <a href="/client/edit/<%= client.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
               <a href="/client/delete/<%= client.id %>" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>

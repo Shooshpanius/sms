@@ -9,7 +9,6 @@ class ClientController < ApplicationController
       clients = Client.where('user_id = ? and lower(fio) like ?', session[:user_id], id+'%')
     end
 
-
     @form_data = {
         id: id,
         clients: clients
