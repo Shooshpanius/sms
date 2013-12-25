@@ -22,7 +22,7 @@
       <th>Действия</th>
 
       <% @form_data[:list_strings].each.with_index do |list_string, index| %>
-        <tr id=<%= list_string.dogovor %>>
+        <tr id="s_<%= list_string.dogovor %>">
           <td><%= index+1 %></td>
           <td><%= list_string.fio %></td>
           <td><%= list_string.dogovor %></td>
@@ -38,7 +38,7 @@
 
             <% end %>
           </td>
-          <td><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button></td>
+          <td><button type="button" class="btn btn-danger btn-xs" onclick="delete_list_string(<%= list_string.id %>)"><i class="glyphicon glyphicon-trash"></i></button></td>
 
 
 

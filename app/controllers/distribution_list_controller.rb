@@ -33,6 +33,12 @@ class DistributionListController < ApplicationController
     render :nothing => true
   end
 
+  def srv_delete_list_string
+    list_string_id = params[:list_string_id]
+    answer_id = ListString.try_delete(list_string_id, session[:user_id])
+    render text: 's_'+answer_id
+  end
+
   def srv_file_to_list
 
     file_root = FileRoot.find(params[:file_id])

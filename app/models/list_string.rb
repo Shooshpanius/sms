@@ -9,6 +9,19 @@ class ListString < ActiveRecord::Base
     return strings
   end
 
+  def ListString.try_delete(list_string_id, user_id)
+    list_string = ListString.find(list_string_id)
+    list_root = ListRoot.find(list_string.list_root_id)
+    if list_root.user_id == user_id
+      ListString.destroy(list_string_id)
+      return list_string_id
+    else
+      return nil
+    end
+
+  end
+
+
   def ListString.add_strings_from_file(list_root_id, params, file_strings, user_id)
 
     file_strings.each do |file_string|
