@@ -5,14 +5,14 @@ class ClientPhone < ActiveRecord::Base
     phone_array.each do |phone|
       client_phone = ClientPhone.where('client_id = ? and phone = ?', client_id, phone)
 
-      case phone_type
-        when phone[0] == '9'
+      case phone[0]
+        when '9'
           phone_type = 1
         else
           phone_type = 2
       end
 
-      if client_phone == nil
+      if client_phone.size == 0
         ClientPhone.create(
           :client_id => client_id,
           :phone => phone,
