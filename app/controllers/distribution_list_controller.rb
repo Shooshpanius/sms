@@ -14,11 +14,7 @@ class DistributionListController < ApplicationController
 
   end
 
-  def srv_delete_list
-    list_id = params[:list_id]
-    ListRoot.try_delete(list_id, session[:user_id])
-    #redirect_to '/distribution_list'
-  end
+
 
 
   def edit
@@ -31,7 +27,11 @@ class DistributionListController < ApplicationController
     }
   end
 
-
+  def srv_delete_list
+    list_id = params[:list_id]
+    ListRoot.try_delete(list_id, session[:user_id])
+    render :nothing => true
+  end
 
   def srv_file_to_list
 
