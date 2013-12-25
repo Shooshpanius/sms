@@ -25,7 +25,7 @@ class DistributionFileController < ApplicationController
   def srv_delete_file
     file_id = params[:file_id]
     FileRoot.try_delete(file_id, session[:user_id])
-    redirect_to "/distribution_file"
+    #redirect_to "/distribution_file"
   end
 
   def srv_save_settings

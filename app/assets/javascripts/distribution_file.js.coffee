@@ -3,13 +3,13 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @delete_file = (file_id) ->
-  if confirm("Удалить файл?")
+  if confirm('Удалить файл?')
     $.ajax
-      url: "/distribution_file/srv_delete_file"
-      type: "POST"
+      url: '/distribution_file/srv_delete_file'
+      type: 'POST'
       async: false
       data: {file_id:file_id}
-      success: (msg) ->
-        location.reload()
+      success: () ->
+        location.replace '/distribution_file'
 
     false
