@@ -1,5 +1,17 @@
 
 
+@delete_file_string = (file_string_id) ->
+  if confirm('Удалить строку?')
+    $.ajax
+      url: '/distribution_file/srv_delete_file_string'
+      type: 'POST'
+      async: false
+      data: {file_string_id:file_string_id}
+      success: (msg) ->
+        $("#"+msg).remove()
+
+    false
+
 @save_settings = ->
   queryString = $("#filter_form").serialize()
   $.ajax

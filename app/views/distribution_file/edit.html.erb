@@ -235,8 +235,8 @@
     <tbody>
 
     <% @form_data[:file_strings].each.with_index do |file_string, index| %>
-        <tr>
-          <td><%= index+1 %><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button></td>
+        <tr id="s_<%= file_string.id %>">
+          <td><%= index+1 %><button type="button" class="btn btn-danger btn-xs" onclick="delete_file_string(<%= file_string.id %>)"><i class="glyphicon glyphicon-trash"></i></button></td>
           <td><%= file_string.s_00 %></td>
           <td><%= file_string.s_01 %></td>
           <td><%= file_string.s_02 %></td>

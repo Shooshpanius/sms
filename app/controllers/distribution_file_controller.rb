@@ -28,6 +28,14 @@ class DistributionFileController < ApplicationController
     render :nothing => true
   end
 
+
+  def srv_delete_file_string
+    file_string_id = params[:file_string_id]
+    answer_id = FileString.try_delete(file_string_id, session[:user_id])
+    render text: 's_'+answer_id
+  end
+
+
   def srv_save_settings
 
     settings = FileFilterSetting.where("user_id = ?", session[:user_id])
