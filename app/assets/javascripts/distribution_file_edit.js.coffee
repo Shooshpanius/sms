@@ -8,7 +8,8 @@
       async: false
       data: {file_string_id:file_string_id}
       success: (msg) ->
-        $("#"+msg).remove()
+        $("#"+msg).hide "slow", ->
+          $(this).remove()
 
     false
 
