@@ -39,7 +39,7 @@
               <td><%= file.created_at%></td>
               <td>
                 <a href="/distribution_file/edit/<%= file.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                <a href="/distribution_file/delete/<%= file.id %>" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                <a type="button" class="btn btn-danger btn-xs" onclick="delete_file(<%= file.id %>)"><i class="glyphicon glyphicon-trash"></i></a>
               </td>
             </tr>
         <% end %>

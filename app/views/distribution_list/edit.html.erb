@@ -22,7 +22,7 @@
       <th>Действия</th>
 
       <% @form_data[:list_strings].each.with_index do |list_string, index| %>
-        <tr>
+        <tr id=<%= list_string.dogovor %>>
           <td><%= index+1 %></td>
           <td><%= list_string.fio %></td>
           <td><%= list_string.dogovor %></td>
