@@ -567,7 +567,7 @@ class ListString < ActiveRecord::Base
             :adress => addr
           )
           phone_array = phone.scan(/[[:word:]]+/)
-          ClientPhone.update_phones(phone_array, client_id, user_id)
+          ClientPhone.update_phones(phone_array, client_id.id, user_id)
 
         else
           Client.update(
