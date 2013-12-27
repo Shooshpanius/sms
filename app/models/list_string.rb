@@ -547,6 +547,7 @@ class ListString < ActiveRecord::Base
       end
 
 
+
       if  (filter_agent_text.size > 0 and filter_agent_text == params[:filter_agent_text]) or (filter_agent_text.size == 0)
         ListString.create(
             :list_root_id => list_root_id,
