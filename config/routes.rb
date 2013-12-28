@@ -5,6 +5,8 @@ Sms::Application.routes.draw do
   resources :distribution_file, :path => 'distribution_file/(:action)(.:format)'
   resources :distribution_list, :path => 'distribution_list/(:action)(.:format)'
   resources :client, :path => 'client/(:action)(.:format)'
+  resources :template_text, :path => 'template_text/(:action)(.:format)'
+  resources :template_voice, :path => 'template_voice/(:action)(.:format)'
 
   root 'main#index'
 
