@@ -60,7 +60,7 @@
             <td><%= client.adress%></td>
             <td>
               <% client.client_phones.all.each do |phone| %>
-                <div id="<%= phone.id %>" onclick="phone_edit(<%= phone.id %>)" style="cursor: pointer" ><%= phone.phone %></div>
+                <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer" ><%= phone.phone %></div>
 
               <% end %>
 
@@ -75,4 +75,12 @@
 
       </tbody>
     </table>
+
+
+
+<div id="client_phone_dialog">
+
+</div>
+
+
 
