@@ -9,6 +9,7 @@ class CreateListStrings < ActiveRecord::Migration
       t.date :oplata_date
       t.string :phone
 
+
       t.timestamps
     end
   end
