@@ -14,14 +14,21 @@
 
     false
 
+  $(document).on "click", "#phone_edit_save", ->
 
-@phone_edit_save = ->
-  queryString = $("#phone_edit").serialize()
-  $.ajax
-    url: '/client/srv_phone_edit_save'
-    type: 'POST'
-    data: queryString
-    success: () ->
-      $("#mPhoneEdit").modal 'hide'
+    main_phone = $("#main_phone").val()
+    second_phone = $("#second_phone").val()
+    checkbox = $("#replacement").prop("checked")
+    $.ajax
+      url: '/client/srv_phone_edit_save'
+      type: 'POST'
+      sync: false
+      data: {main_phone:main_phone, second_phone:second_phone, checkbox:checkbox}
+    #      success: () ->
+    #        $("#mPhoneEdit").modal 'hide'
 
-  false
+    false
+
+
+
+
