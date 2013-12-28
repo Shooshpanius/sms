@@ -13,3 +13,15 @@
       $("#client_phone_dialog").html msg
 
     false
+
+
+@phone_edit_save = ->
+  queryString = $("#phone_edit").serialize()
+  $.ajax
+    url: '/client/srv_phone_edit_save'
+    type: 'POST'
+    data: queryString
+    success: () ->
+      $("#mPhoneEdit").modal 'hide'
+
+  false

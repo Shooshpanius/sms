@@ -34,6 +34,12 @@ class ClientController < ApplicationController
   end
 
 
+  def srv_phone_edit_save
+
+    render nothing: true
+
+  end
+
   private
   def is_login
     if !session[:is_login]

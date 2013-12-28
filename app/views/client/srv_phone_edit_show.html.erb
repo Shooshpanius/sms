@@ -9,7 +9,7 @@
             <div class="modal-body">
 
 
-                <form class="form-inline" role="form">
+                <form class="form-inline" role="form" id="phone_edit">
                     <div class="form-group hidden">
                       <label class="sr-only" for="phone_id">Номер</label>
                       <input type="text" class="form-control" id="phone_id" value=<%=@form_data[:phone].id%>   >
@@ -23,7 +23,7 @@
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" id="replacement"
-                                <%if @form_data[:phone].replace == true%>
+                                <%if @form_data[:phone].replace %>
                                     checked="checked"
                                 <% end %>
                             > Заменять на:
@@ -40,7 +40,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success">Сохранить</button>
+                <button type="button" class="btn btn-success" onclick="phone_edit_save()">Сохранить</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
             </div>
         </div>
