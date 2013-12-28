@@ -24,9 +24,12 @@ class ClientController < ApplicationController
     phone = ClientPhone.find(phone_id)
     client = Client.find(phone.client_id)
 
+    @form_data = {
+        phone: phone,
+        client: client
+    }
+
     render layout: false
-
-
 
   end
 
