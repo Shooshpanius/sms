@@ -30,11 +30,9 @@
           <td><%= list_string.summa_dolg %></td>
           <td><%= list_string.oplata_date %></td>
           <td>
-            <%
-               phone_array = list_string.phone.scan(/[[:word:]]+/)
-            %>
-            <% phone_array.each do |phone| %>
-            <%= phone  %><br />
+            <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
+            <% client[0].client_phones.all.each do |phone| %>
+                <div id="<%= phone.id %>" onclick="phone_edit(<%= phone.id %>)" style="cursor: pointer" ><%= phone.phone %></div>
 
             <% end %>
           </td>
