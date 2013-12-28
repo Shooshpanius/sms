@@ -313,7 +313,7 @@ class ListString < ActiveRecord::Base
           sum_plat = ''
       end
 
-      case params[:oplata_date]
+      case params[:date_oplata]
         when 's_00'
           oplata_date = file_string.s_00
         when 's_01'
@@ -483,7 +483,6 @@ class ListString < ActiveRecord::Base
         else
           contact = ''
       end
-
 
 
       filter_agent_text = ''

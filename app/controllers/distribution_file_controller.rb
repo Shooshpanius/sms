@@ -50,7 +50,8 @@ class DistributionFileController < ApplicationController
                                  :addr => params[:addr],
                                  :contact => params[:contact],
                                  :filter_agent => params[:filter_agent],
-                                 :filter_agent_text => params[:filter_agent_text]
+                                 :filter_agent_text => params[:filter_agent_text],
+                                 :date_oplata => params[:date_oplata]
         ) :
         FileFilterSetting.update(settings[0].id,
                                  :s_fio => params[:s_fio],
@@ -61,7 +62,8 @@ class DistributionFileController < ApplicationController
                                  :addr => params[:addr],
                                  :contact => params[:contact],
                                  :filter_agent => params[:filter_agent],
-                                 :filter_agent_text => params[:filter_agent_text]
+                                 :filter_agent_text => params[:filter_agent_text],
+                                 :date_oplata => params[:date_oplata]
         )
 
 

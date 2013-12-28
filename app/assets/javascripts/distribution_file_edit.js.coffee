@@ -43,24 +43,26 @@
         required: true
       contact:
         required: true
+      date_oplata:
+        required: true
 
     errorClass: "input_error"
     errorElement: "em"
     messages:
-      s_fio: ""
-      dogovor: ""
-      phone: ""
-      sum_main: ""
-      sum_plat: ""
-      addr: ""
-      contact: ""
+      s_fio: ''
+      dogovor: ''
+      phone: ''
+      sum_main: ''
+      sum_plat: ''
+      addr: ''
+      contact: ''
+      date_oplata: ''
 
-
-    submitHandler: (form) ->
+    submitHandler: () ->
       queryString = $("#filter_form").serialize()
       $.ajax
-        url: "/distribution_list/srv_file_to_list"
-        type: "POST"
+        url: '/distribution_list/srv_file_to_list'
+        type: 'POST'
 #        async: false
         data: queryString
         beforeSend: () ->

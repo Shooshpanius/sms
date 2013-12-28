@@ -12,6 +12,7 @@ class CreateFileFilterSettings < ActiveRecord::Migration
       t.string :contact
       t.string :filter_agent
       t.string :filter_agent_text
+      t.string :date_oplata
 
       t.timestamps
     end
