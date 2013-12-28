@@ -6,7 +6,7 @@ class CreateListStrings < ActiveRecord::Migration
       t.string :dogovor
       t.float :summa
       t.float :summa_dolg
-      t.datetime :oplata_date
+      t.date :oplata_date
       t.string :phone
 
       t.timestamps
