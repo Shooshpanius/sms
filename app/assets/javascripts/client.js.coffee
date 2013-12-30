@@ -14,18 +14,21 @@
 
     false
 
-  $(document).on "click", "#phone_edit_save", ->
-    main_phone = $("#main_phone").val()
-    second_phone = $("#second_phone").val()
-    checkbox = $("#replacement").prop("checked")
-    $.ajax
-      url: '/client/srv_phone_edit_save'
-      type: 'POST'
-      sync: false
-      data: {main_phone:main_phone, second_phone:second_phone, checkbox:checkbox}
-      success: () ->
-        $("#mPhoneEdit").modal 'hide'
-    false
+$(document).on "click", "#phone_edit_save", ->
+  phone_id = $("#phone_id").val()
+  main_phone = $("#main_phone").val()
+  second_phone = $("#second_phone").val()
+  checkbox = $("#replacement").prop("checked")
+  $.ajax
+    url: '/client/srv_phone_edit_save'
+    type: 'POST'
+    sync: false
+    data: {phone_id:phone_id, main_phone:main_phone, second_phone:second_phone, checkbox:checkbox}
+    success: (msg) ->
+      user = eval(msg)
+      $("#mPhoneEdit").modal 'hide'
+      $("#"+phone_id).html user.phone
+  false
 
 
 

@@ -54,13 +54,19 @@
       <tbody>
 
       <% @form_data[:clients].each.with_index do |client, index| %>
-          <tr id="<%= client.id %>">
+          <tr id="c_<%= client.id %>">
             <td><%= client.dogovor %></td>
             <td><%= client.fio %></td>
             <td><%= client.adress%></td>
             <td>
               <% client.client_phones.all.each do |phone| %>
-                <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer" ><%= phone.phone %></div>
+                <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer" >
+                  <%if phone.replace%>
+                    <span class="label label-danger"><%= phone.phone %></span>
+                  <%else%>
+                    <%= phone.phone %>
+                  <%end%>
+                </div>
 
               <% end %>
 
