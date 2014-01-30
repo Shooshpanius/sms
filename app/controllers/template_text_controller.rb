@@ -5,7 +5,7 @@ class TemplateTextController < ApplicationController
 
   def index
 
-    render :nothing => true
+    #render :nothing => true
 
   end
 
