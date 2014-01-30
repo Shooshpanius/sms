@@ -3,6 +3,18 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
+@delete_template = (template_id) ->
+  if confirm('Удалить шаблон?')
+    $.ajax
+      url: '/template_text/srv_delete_template'
+      type: 'POST'
+      async: false
+      data: {template_id:template_id}
+      success: (msg) ->
+        $("#"+msg).hide "slow", ->
+          $(this).remove()
+    false
+
 @edit_template = (template_id) ->
   $.ajax
     url: '/template_text/srv_edit_template_modal'

@@ -20,6 +20,13 @@ class TemplateTextController < ApplicationController
     render :nothing => true
   end
 
+  def srv_delete_template
+    TemplateText.destroy_all(:id => params[:template_id],
+                             :user_id => session[:user_id]
+    )
+    render :text => 't_'+params[:template_id]
+  end
+
   def srv_edit_template_modal
     template = TemplateText.where('id = ? and user_id = ?', params[:template_id], session[:user_id])
     @form_data = {
