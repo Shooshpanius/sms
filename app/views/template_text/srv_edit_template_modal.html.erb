@@ -1,0 +1,24 @@
+
+<div class="modal fade" id="edit_template_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Редактирование шаблона</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Название" value="<%= @form_data[:template][0].name %>"><br />
+        <input type="text" class="form-control" id="inputText" name="inputText" placeholder="Текст" value="<%= @form_data[:template][0].text %>"><br />
+        <input type="checkbox" id="inputTranslite" name="inputTranslite"
+           <% if @form_data[:template][0].translite == true %>
+           checked = "checked"
+           <% end %>
+        > Транслит
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
