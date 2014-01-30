@@ -32,7 +32,7 @@ class TemplateTextController < ApplicationController
     TemplateText.where('id = ? and user_id = ?', params[:template_id], session[:user_id]).update_all(
         :name => params[:template_name],
         :text => params[:template_text],
-        :translite => params[:template_translite]
+        :translite => (params[:template_translite]=='true')?1:0
     )
     render :nothing => true
   end
