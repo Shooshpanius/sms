@@ -12,10 +12,22 @@
     success: (msg) ->
       $("#edit_template_modal_container").html msg
       $("#edit_template_modal").modal 'show'
-#      location.replace '/distribution_list'
-
   false
 
+@save_template_modal = (template_id) ->
+  $.ajax
+    url: '/template_text/srv_save_template_modal'
+    type: 'POST'
+    async: false
+    data: {
+      template_id: template_id,
+      template_name: $("#inputNameModal").val(),
+      template_text: $("#inputTextModal").val(),
+      template_translite: $("#inputTransliteModal").is(':checked')
+    }
+    success: (msg) ->
+      location.reload()
+  false
 
 
 $(document).ready ($) ->
