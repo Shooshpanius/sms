@@ -28,6 +28,15 @@ class TemplateTextController < ApplicationController
     render(:layout => false)
   end
 
+  def srv_save_template_modal
+    TemplateText.where('id = ? and user_id = ?', params[:template_id], session[:user_id]).update_all(
+        :name => params[:template_name],
+        :text => params[:template_text],
+        :translite => params[:template_translite]
+    )
+    render :nothing => true
+  end
+
   private
   def is_login
     if !session[:is_login]
