@@ -1,4 +1,7 @@
 
+@mass_distribution_show = () ->
+  $("#massDistributionShow").toggle "slow"
+
 @phone_edit_show = (phone_id) ->
   $.ajax
     url: '/client/srv_phone_edit_show'

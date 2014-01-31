@@ -1,30 +1,23 @@
 <%= javascript_include_tag "main" %>
 <%= javascript_include_tag "distribution_list_edit" %>
 
-
 <div class="panel panel-info">
-
   <div class="panel-heading">
-    <h3 class="panel-title">Групповая рассылка</h3>
+    <h3 class="panel-title" onclick="mass_distribution_show()" style="cursor: pointer;">Групповая рассылка</h3>
   </div>
-
-  <div class="panel-body">
-
-      <div class="input-group" style="margin-bottom: 5px;">
-        <select class="form-control">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-          <span class="input-group-btn">
-            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-envelope"></i></button>
-          </span>
-      </div><!-- /input-group -->
-
-
-
+  <div class="panel-body" id="massDistributionShow" style="display: none;">
+    <div class="input-group" style="margin-bottom: 5px;">
+    <select class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+      <span class="input-group-btn">
+        <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-envelope"></i></button>
+      </span>
+    </div><!-- /input-group -->
     <div class="input-group">
       <select class="form-control">
         <option>1</option>
@@ -37,16 +30,12 @@
             <button class="btn btn-info" type="button"><i class="glyphicon glyphicon-music"></i></button>
           </span>
     </div><!-- /input-group -->
-
-
   </div>
 </div>
 
 
 <div class="panel panel-success">
   <div class="panel-heading">Строки листа</div>
-
-
   <table class="table table-bordered table-condensed">
     <thead>
     <tr>
@@ -58,55 +47,41 @@
       <th>Дата оплаты</th>
       <th>Телефон</th>
       <th>Действия</th>
-
-      <% @form_data[:list_strings].each.with_index do |list_string, index| %>
-        <tr id="s_<%= list_string.id %>">
-          <td><%= index+1 %></td>
-          <td><%= list_string.fio %></td>
-          <td><%= list_string.dogovor %></td>
-          <td><%= list_string.summa %></td>
-          <td><%= list_string.summa_dolg %></td>
-          <td><%= list_string.oplata_date %></td>
-          <td>
-            <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
-            <% client[0].client_phones.all.each do |phone| %>
-                <input type="checkbox" id="send_<%= phone.id %>" name="send_array" style="margin-right: 10px; float: left">
-                <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer; float: left" >
-                  <%if phone.replace%>
-                      <span class="label label-danger"><%= phone.replace_phone %></span>
-                  <%else%>
-                      <span><%= phone.phone %></span>
-                  <%end%>
-                </div>
-                <br />
-            <% end %>
-          </td>
-          <td>
-            <button type="button" class="btn btn-success btn-xs" ><i class="glyphicon glyphicon-envelope"></i></button>
-            <button type="button" class="btn btn-info btn-xs" ><i class="glyphicon glyphicon-music"></i></button>
-            <button type="button" class="btn btn-danger btn-xs" onclick="delete_list_string(<%= list_string.id %>)"><i class="glyphicon glyphicon-trash"></i></button>
-          </td>
-
-
-
-
-        </tr>
-    <% end %>
-
-      <th>Действия</th>
     </tr>
     </thead>
     <tbody>
-
-
-
+        <% @form_data[:list_strings].each.with_index do |list_string, index| %>
+            <tr id="s_<%= list_string.id %>">
+              <td><%= index+1 %></td>
+              <td><%= list_string.fio %></td>
+              <td><%= list_string.dogovor %></td>
+              <td><%= list_string.summa %></td>
+              <td><%= list_string.summa_dolg %></td>
+              <td><%= list_string.oplata_date %></td>
+              <td>
+                <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
+                <% client[0].client_phones.all.each do |phone| %>
+                    <input type="checkbox" id="send_<%= phone.id %>" name="send_array" style="margin-right: 10px; float: left">
+                    <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer; float: left" >
+                      <%if phone.replace%>
+                          <span class="label label-danger"><%= phone.replace_phone %></span>
+                      <%else%>
+                          <span><%= phone.phone %></span>
+                      <%end%>
+                    </div>
+                    <br />
+                <% end %>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success btn-xs" ><i class="glyphicon glyphicon-envelope"></i></button>
+                <button type="button" class="btn btn-info btn-xs" ><i class="glyphicon glyphicon-music"></i></button>
+                <button type="button" class="btn btn-danger btn-xs" onclick="delete_list_string(<%= list_string.id %>)"><i class="glyphicon glyphicon-trash"></i></button>
+              </td>
+            </tr>
+        <% end %>
 
     </tbody>
   </table>
-
-
 </div>
 
-<div id="client_phone_dialog">
-
-</div>
+<div id="client_phone_dialog"></div>
