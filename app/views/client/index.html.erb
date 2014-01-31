@@ -62,7 +62,7 @@
               <% client.client_phones.all.each do |phone| %>
                 <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer" >
                   <%if phone.replace%>
-                    <span class="label label-danger"><%= phone.phone %></span>
+                    <span class="label label-danger"><%= phone.replace_phone %></span>
                   <%else%>
                     <%= phone.phone %>
                   <%end%>
