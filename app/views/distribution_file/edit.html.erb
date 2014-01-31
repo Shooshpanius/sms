@@ -90,118 +90,127 @@
 %>
 
 
+<div class="panel panel-info">
 
-<form class="form-horizontal" role="form" id="filter_form" name="filter_form">
-
-  <div class="form-group hidden">
-    <label for="file_id" class="col-sm-2 control-label">file_id</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="file_id" id="file_id" value="<%= @form_data[:file_id] %>">
+    <div class="panel-heading">
+      <h3 class="panel-title" onclick="import_params_show()" style="cursor: pointer;">Параметры импорта </h3>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="s_fio" class="col-sm-2 control-label">ФИО</label>
-    <div class="col-sm-10">
-      <%== '<select name="s_fio" id="s_fio" class="form-control">' %>
-      <%= options_for_select(select_array, s_fio) %>
-      <%== '</select>' %>
+    <div class="panel-body" id="importParamsShow" style="display: none;">
+
+        <form class="form-horizontal" role="form" id="filter_form" name="filter_form">
+
+          <div class="form-group hidden">
+            <label for="file_id" class="col-sm-2 control-label">file_id</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="file_id" id="file_id" value="<%= @form_data[:file_id] %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="s_fio" class="col-sm-2 control-label">ФИО</label>
+            <div class="col-sm-10">
+              <%== '<select name="s_fio" id="s_fio" class="form-control">' %>
+              <%= options_for_select(select_array, s_fio) %>
+              <%== '</select>' %>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dogovor" class="col-sm-2 control-label">Договор</label>
+            <div class="col-sm-10">
+              <%== '<select name="dogovor" id="dogovor" class="form-control">' %>
+              <%= options_for_select(select_array, dogovor) %>
+              <%== '</select>' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="col-sm-2 control-label">Телефон</label>
+            <div class="col-sm-10">
+              <%== '<select name="phone" id="phone" class="form-control">' %>
+              <%= options_for_select(select_array, phone) %>
+              <%== '</select>' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sum_main" class="col-sm-2 control-label">Общий долг</label>
+            <div class="col-sm-10">
+              <%== '<select name="sum_main" id="sum_main" class="form-control">' %>
+              <%= options_for_select(select_array, sum_main) %>
+              <%== '</select>' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sum_plat" class="col-sm-2 control-label">Расчетный платеж</label>
+            <div class="col-sm-10">
+              <%== '<select name="sum_plat" id="sum_plat" class="form-control">' %>
+              <%= options_for_select(select_array, sum_plat) %>
+              <%== '</select>' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="addr" class="col-sm-2 control-label">Адрес</label>
+            <div class="col-sm-10">
+              <%== '<select name="addr" id="addr" class="form-control">' %>
+              <%= options_for_select(select_array, addr) %>
+              <%== '</select>' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact" class="col-sm-2 control-label">Контактные лица</label>
+            <div class="col-sm-10">
+              <%== '<select name="contact" id="contact" class="form-control">' %>
+              <%= options_for_select(select_array, contact) %>
+              <%== '</select>' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date_oplata" class="col-sm-2 control-label">Дата оплаты по ГП</label>
+            <div class="col-sm-10">
+              <%== '<select name="date_oplata" id="date_oplata" class="form-control">' %>
+              <%= options_for_select(select_array, date_oplata) %>
+              <%== '</select>' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="list_name" class="col-sm-2 control-label">Наименование листа</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="list_name" id="list_name" placeholder="Если не заполнить, будет аналогично имени файла">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="filter_agent" class="col-sm-2 control-label">Фильтр по агенту</label>
+            <div class="col-sm-2">
+              <%== '<select name="filter_agent" id="filter_agent" class="form-control">' %>
+              <%= options_for_select(select_array, filter_agent) %>
+              <%== '</select>' %>
+            </div>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="filter_agent_text" id="filter_agent_text" value="<%= filter_agent_text %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success" onclick="create_list()">Создать глобальный лист</button>
+              <button type="button" class="btn btn-info" onclick="save_settings()" >Сохранить настройки</button>
+            </div>
+          </div>
+        </form>
+
 
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="dogovor" class="col-sm-2 control-label">Договор</label>
-    <div class="col-sm-10">
-      <%== '<select name="dogovor" id="dogovor" class="form-control">' %>
-      <%= options_for_select(select_array, dogovor) %>
-      <%== '</select>' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="phone" class="col-sm-2 control-label">Телефон</label>
-    <div class="col-sm-10">
-      <%== '<select name="phone" id="phone" class="form-control">' %>
-      <%= options_for_select(select_array, phone) %>
-      <%== '</select>' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="sum_main" class="col-sm-2 control-label">Общий долг</label>
-    <div class="col-sm-10">
-      <%== '<select name="sum_main" id="sum_main" class="form-control">' %>
-      <%= options_for_select(select_array, sum_main) %>
-      <%== '</select>' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="sum_plat" class="col-sm-2 control-label">Расчетный платеж</label>
-    <div class="col-sm-10">
-      <%== '<select name="sum_plat" id="sum_plat" class="form-control">' %>
-      <%= options_for_select(select_array, sum_plat) %>
-      <%== '</select>' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="addr" class="col-sm-2 control-label">Адрес</label>
-    <div class="col-sm-10">
-      <%== '<select name="addr" id="addr" class="form-control">' %>
-      <%= options_for_select(select_array, addr) %>
-      <%== '</select>' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="contact" class="col-sm-2 control-label">Контактные лица</label>
-    <div class="col-sm-10">
-      <%== '<select name="contact" id="contact" class="form-control">' %>
-      <%= options_for_select(select_array, contact) %>
-      <%== '</select>' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="date_oplata" class="col-sm-2 control-label">Дата оплаты по ГП</label>
-    <div class="col-sm-10">
-      <%== '<select name="date_oplata" id="date_oplata" class="form-control">' %>
-      <%= options_for_select(select_array, date_oplata) %>
-      <%== '</select>' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="list_name" class="col-sm-2 control-label">Наименование листа</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="list_name" id="list_name" placeholder="Если не заполнить, будет аналогично имени файла">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="filter_agent" class="col-sm-2 control-label">Фильтр по агенту</label>
-    <div class="col-sm-2">
-      <%== '<select name="filter_agent" id="filter_agent" class="form-control">' %>
-      <%= options_for_select(select_array, filter_agent) %>
-      <%== '</select>' %>
-    </div>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" name="filter_agent_text" id="filter_agent_text" value="<%= filter_agent_text %>">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-success" onclick="create_list()">Создать глобальный лист</button>
-      <button type="button" class="btn btn-info" onclick="save_settings()" >Сохранить настройки</button>
-    </div>
-  </div>
-</form>
-
-
-
+</div>
 
 
 

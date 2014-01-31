@@ -1,5 +1,8 @@
 
 
+@import_params_show = () ->
+  $("#importParamsShow").toggle "slow"
+
 @delete_file_string = (file_string_id) ->
   if confirm('Удалить строку?')
     $.ajax
