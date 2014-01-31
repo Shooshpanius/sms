@@ -32,16 +32,22 @@
           <td>
             <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
             <% client[0].client_phones.all.each do |phone| %>
-                <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer" >
+                <input type="checkbox" id="send_<%= phone.id %>" name="send_array" style="margin-right: 10px; float: left">
+                <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer; float: left" >
                   <%if phone.replace%>
                       <span class="label label-danger"><%= phone.replace_phone %></span>
                   <%else%>
-                      <%= phone.phone %>
+                      <span><%= phone.phone %></span>
                   <%end%>
                 </div>
+                <br />
             <% end %>
           </td>
-          <td><button type="button" class="btn btn-danger btn-xs" onclick="delete_list_string(<%= list_string.id %>)"><i class="glyphicon glyphicon-trash"></i></button></td>
+          <td>
+            <button type="button" class="btn btn-success btn-xs" ><i class="glyphicon glyphicon-envelope"></i></button>
+            <button type="button" class="btn btn-info btn-xs" ><i class="glyphicon glyphicon-music"></i></button>
+            <button type="button" class="btn btn-danger btn-xs" onclick="delete_list_string(<%= list_string.id %>)"><i class="glyphicon glyphicon-trash"></i></button>
+          </td>
 
 
 
