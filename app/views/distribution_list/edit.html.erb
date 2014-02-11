@@ -3,28 +3,20 @@
 
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title" onclick="mass_distribution_show()" style="cursor: pointer;">Групповая рассылка</h3>
+    <h3 class="panel-title" style="cursor: pointer;">Выбор шаблонов</h3>
   </div>
-  <div class="panel-body" id="massDistributionShow" style="display: none;">
+  <div class="panel-body" id="massDistributionShow" >
     <div class="input-group" style="margin-bottom: 5px;">
-    <select class="form-control">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <select class="form-control" id="textTemplate">
+      <%= options_for_select(@form_data[:text_templates]) %>
     </select>
       <span class="input-group-btn">
         <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-envelope"></i></button>
       </span>
     </div><!-- /input-group -->
     <div class="input-group">
-      <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+      <select class="form-control" id="voiceTemplate">
+
       </select>
           <span class="input-group-btn">
             <button class="btn btn-info" type="button"><i class="glyphicon glyphicon-music"></i></button>
