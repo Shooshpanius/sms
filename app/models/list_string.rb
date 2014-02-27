@@ -4,7 +4,7 @@ class ListString < ActiveRecord::Base
   def ListString.get_strings(list_id, user_id)
     strings = []
     if ListRoot.find(list_id).user_id == user_id
-      strings = ListString.where('list_root_id = ?', list_id).order('fio ASC')
+      strings = ListString.where('list_root_id = ?', list_id)
     end
     return strings
   end
