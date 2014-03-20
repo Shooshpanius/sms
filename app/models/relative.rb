@@ -6,6 +6,10 @@ class Relative < ActiveRecord::Base
 
     contact_array = contact.split(' ,')
 
+    Relative.create(
+        :client_id => client_id,
+        :fio => contact_array
+    )
 
 
 
