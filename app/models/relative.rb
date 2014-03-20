@@ -4,11 +4,12 @@ class Relative < ActiveRecord::Base
 
   def Relative.update_phones(contact, client_id, user_id)
 
-    contact_array = contact.split(' ,')
+    contact_array = contact.split(', ')
 
     Relative.create(
         :client_id => client_id,
-        :fio => contact_array
+        :fio => contact_array,
+        :relationship => contact_array.size
     )
 
 
