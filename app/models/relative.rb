@@ -8,7 +8,7 @@ class Relative < ActiveRecord::Base
 
     Relative.create(
         :client_id => client_id,
-        :fio => contact_array
+        :fio => contact_array.size
     )
 
 
