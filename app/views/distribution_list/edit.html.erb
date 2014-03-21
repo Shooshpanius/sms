@@ -45,7 +45,8 @@
       <th>Платеж</th>
       <th>Долг</th>
       <th>Дата оплаты</th>
-      <th>Телефон</th>
+      <th>Телефоны</th>
+      <th>Контакты</th>
       <th>Действия</th>
     </tr>
     </thead>
@@ -68,6 +69,18 @@
                       <%else%>
                           <span><%= phone.phone %></span>
                       <%end%>
+                    </div>
+                    <br />
+                <% end %>
+              </td>
+              <td>
+                <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
+                <% client[0].relatives.all.each do |phone| %>
+                    <input type="checkbox" id="send_r_<%= phone.id %>" name="send_array" style="margin-right: 10px; float: left">
+                    <div id="<%= phone.id %>" style="float: left" >
+
+                     <span><%= phone.phone %></span>
+
                     </div>
                     <br />
                 <% end %>
