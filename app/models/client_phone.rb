@@ -2,7 +2,7 @@ class ClientPhone < ActiveRecord::Base
 
 
 
-  def ClientPhone.update_phones(phone_array, client_id, user_id)
+  def ClientPhone.update_phones(phone_array, client_id)
 
     phone_array.each do |phone|
       client_phone = ClientPhone.where('client_id = ? and phone = ?', client_id, phone)

@@ -558,7 +558,7 @@ class ListString < ActiveRecord::Base
             :phone => phone
         )
 
-        client = Client.where('dogovor = ?', dogovor)
+        client = Client.where('user_id = ? and dogovor = ?', user_id, dogovor)
         if client.size == 0
           client_id =  Client.create(
             :user_id => user_id,
@@ -567,8 +567,8 @@ class ListString < ActiveRecord::Base
             :adress => addr
           )
           phone_array = phone.scan(/[[:word:]]+/)
-          ClientPhone.update_phones(phone_array, client_id.id, user_id)
-          Relative.update_phones(contact, client_id.id, user_id)
+          ClientPhone.update_phones(phone_array, client_id.id)
+          Relative.update_phones(contact, client_id.id)
 
         else
           Client.update(
@@ -579,8 +579,8 @@ class ListString < ActiveRecord::Base
               :adress => addr
           )
           phone_array = phone.scan(/[[:word:]]+/)
-          ClientPhone.update_phones(phone_array, client[0].id, user_id)
-          Relative.update_phones(contact, client[0].id, user_id)
+          ClientPhone.update_phones(phone_array, client[0].id)
+          Relative.update_phones(contact, client[0].id)
 
         end
 
