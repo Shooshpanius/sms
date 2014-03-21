@@ -1,6 +1,5 @@
 
 
-
 @phone_edit_show = (phone_id) ->
   $.ajax
     url: '/client/srv_phone_edit_show'
