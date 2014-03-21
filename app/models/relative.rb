@@ -11,6 +11,8 @@ class Relative < ActiveRecord::Base
 
         fio = rel[0]
 
+        phones_array = Array.new
+
         if rel.size == 2
           relationship = ''
           phones_array = rel[1].split(',')
