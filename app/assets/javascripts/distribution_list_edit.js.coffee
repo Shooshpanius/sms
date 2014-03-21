@@ -28,6 +28,7 @@ $(document).on "click", "#phone_edit_save", ->
   main_phone = $("#main_phone").val()
   second_phone = $("#second_phone").val()
   checkbox = $("#replacement").prop("checked")
+
   $.ajax
     url: '/client/srv_phone_edit_save'
     type: 'POST'
