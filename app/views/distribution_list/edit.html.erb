@@ -79,7 +79,8 @@
                     <input type="checkbox" id="send_r_<%= phone.id %>" name="send_array" style="margin-right: 10px; float: left">
                     <div id="<%= phone.id %>" style="float: left" >
 
-                     <span title="<%= phone.fio %> (<%= phone.relationship %>)"><%= phone.phone %></span>
+                     <span><%= phone.phone %></span>
+                     <i class="glyphicon glyphicon-question-sign" style="cursor: pointer;" title="<%= phone.fio %> (<%= phone.relationship %>)"></i>
 
                     </div>
                     <br />
