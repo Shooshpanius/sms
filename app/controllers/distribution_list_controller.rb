@@ -57,7 +57,28 @@ class DistributionListController < ApplicationController
 
   def srv_sms_info_show
 
-    render :nothing => true
+    list_root = ListRoot.find(params[:list_id])
+    list_array = Array.new
+    if list_root.user_id == session[:user_id]
+      list_strings = ListString.where("list_root_id = ?", params[:list_id])
+      list_strings.all.each do |list_string|
+        array_string = {
+          list_root_id: list_string.list_root_id,
+          fio: list_string.fio,
+          dogovor: list_string.dogovor,
+          summa: list_string.summa,
+          summa_dolg: list_string.summa_dolg,
+          oplata_date: list_string.oplata_date
+        }
+        list_array = list_array.push(array_string)
+      end
+
+
+    end
+
+
+
+    render text: JSON.generate(list_array)
   end
 
 
