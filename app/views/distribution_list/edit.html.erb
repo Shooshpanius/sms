@@ -1,6 +1,8 @@
 <%= javascript_include_tag "main" %>
 <%= javascript_include_tag "distribution_list_edit" %>
 
+<input type="text" id="list_id" hidden="hidden" value="<%= @form_data[:list_id] %>" />
+
 <div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title" style="cursor: pointer;">Выбор шаблонов</h3>

@@ -1,4 +1,16 @@
 
+@sms_info_show = (list_id, textTemplate) ->
+  $.ajax
+    url: '/distribution_list/srv_sms_info_show'
+    type: 'POST'
+    async: false
+    data: {
+      list_id:list_id
+      textTemplate: textTemplate
+    }
+    success: (msg) ->
+#      $("#client_phone_dialog").html msg
+    false
 
 @phone_edit_show = (phone_id) ->
   $.ajax
@@ -38,3 +50,9 @@ $(document).on "click", "#phone_edit_save", ->
       $("#mPhoneEdit").modal 'hide'
       $("#"+phone_id).html user.phone
   false
+
+
+$(document).ready ($) ->
+  sms_info_show $("#list_id").val(), $("#textTemplate").val()
+
+

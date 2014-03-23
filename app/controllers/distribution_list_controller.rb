@@ -42,25 +42,22 @@ class DistributionListController < ApplicationController
   end
 
   def srv_file_to_list
-
     file_root = FileRoot.find(params[:file_id])
-
     if file_root.user_id == session[:user_id]
-
       list_root = ListRoot.new
         list_root.user_id = session[:user_id]
       (params[:list_name].size == 0) ? list_root.name = file_root.filename : list_root.name = params[:list_name]
       list_root.save
-
       list_root_id = list_root.id
-
       file_strings = FileString.where('file_root_id = ?', file_root.id)
       ListString.add_strings_from_file(list_root_id, params, file_strings, session[:user_id])
-
     end
+    render :nothing => true
+  end
+
+  def srv_sms_info_show
 
     render :nothing => true
-
   end
 
 
