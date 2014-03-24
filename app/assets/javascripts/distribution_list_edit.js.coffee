@@ -9,10 +9,10 @@
       textTemplate: textTemplate
     }
     success: (msg) ->
-      array = JSON.parse("[" + msg + "]")
-      for i of JSON.stringify(array)
-        ii = JSON.stringify(i)
-        alert ii.fio
+      stringify_msg = JSON.parse(msg)
+      for i of stringify_msg
+        alert stringify_msg[i].fio
+
 
 
 

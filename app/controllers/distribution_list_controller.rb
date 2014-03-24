@@ -58,11 +58,12 @@ class DistributionListController < ApplicationController
   def srv_sms_info_show
 
     list_root = ListRoot.find(params[:list_id])
-    list_array = Array.new
+    list_array = Hash.new
     if list_root.user_id == session[:user_id]
       list_strings = ListString.where("list_root_id = ?", params[:list_id])
       list_strings.all.each do |list_string|
         array_string = {
+          id: list_string.id,
           list_root_id: list_string.list_root_id,
           fio: list_string.fio,
           dogovor: list_string.dogovor,
@@ -70,7 +71,7 @@ class DistributionListController < ApplicationController
           summa_dolg: list_string.summa_dolg,
           oplata_date: list_string.oplata_date
         }
-        list_array = list_array.push(array_string)
+        list_array[list_string.id] = array_string
       end
 
 
