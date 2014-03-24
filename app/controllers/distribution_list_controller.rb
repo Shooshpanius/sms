@@ -65,7 +65,6 @@ class DistributionListController < ApplicationController
       list_strings.all.each do |list_string|
       template_text = template.text
       template_text.tr!("###fio###", list_string.fio)
-      template_text.tr!("###num###", 'to')
       template_text.tr!("###dog###", list_string.dogovor)
       template_text.tr!("###sum###", list_string.summa)
       template_text.tr!("###dlg###", list_string.summa_dolg)
