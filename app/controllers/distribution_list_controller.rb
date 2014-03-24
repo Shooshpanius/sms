@@ -57,11 +57,20 @@ class DistributionListController < ApplicationController
 
   def srv_sms_info_show
 
+    template = TemplateText.find(params[:textTemplate])
     list_root = ListRoot.find(params[:list_id])
     list_array = Hash.new
     if list_root.user_id == session[:user_id]
       list_strings = ListString.where("list_root_id = ?", params[:list_id])
       list_strings.all.each do |list_string|
+      template_text = template.text
+      template_text.tr!("###fio###", list_string.fio)
+      template_text.tr!("###num###", 'to')
+      template_text.tr!("###dog###", list_string.dogovor)
+      template_text.tr!("###sum###", list_string.summa)
+      template_text.tr!("###dlg###", list_string.summa_dolg)
+      template_text.tr!("###dte###", 'to')
+      template_text.tr!("###dtx###", list_string.oplata_date)
         array_string = {
           id: list_string.id,
           list_root_id: list_string.list_root_id,
