@@ -11,7 +11,7 @@
     success: (msg) ->
       stringify_msg = JSON.parse(msg)
       for i of stringify_msg
-        a=stringify_msg[i].fio
+        a=stringify_msg[i].text
         $("#title_"+stringify_msg[i].id).attr "title", a
 
     false

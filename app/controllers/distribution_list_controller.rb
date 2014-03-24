@@ -66,18 +66,14 @@ class DistributionListController < ApplicationController
       template_text = template.text
       template_text.tr!("###fio###", list_string.fio)
       template_text.tr!("###dog###", list_string.dogovor)
-      template_text.tr!("###sum###", list_string.summa)
-      template_text.tr!("###dlg###", list_string.summa_dolg)
-      template_text.tr!("###dte###", 'to')
-      template_text.tr!("###dtx###", list_string.oplata_date)
+      template_text.tr!("###sum###", list_string.summa.to_s)
+      template_text.tr!("###dlg###", list_string.summa_dolg.to_s)
+      template_text.tr!("###dte###", date_of_next('Saturday'))
+      template_text.tr!("###dtx###", list_string.oplata_date.to_s)
         array_string = {
           id: list_string.id,
           list_root_id: list_string.list_root_id,
-          fio: list_string.fio,
-          dogovor: list_string.dogovor,
-          summa: list_string.summa,
-          summa_dolg: list_string.summa_dolg,
-          oplata_date: list_string.oplata_date
+          template_text: text
         }
         list_array[list_string.id] = array_string
       end
