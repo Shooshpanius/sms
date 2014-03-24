@@ -20,7 +20,7 @@ class DistributionListController < ApplicationController
   def edit
     list_id = params[:id]
     list_strings = ListString.get_strings(list_id, session[:user_id])
-    text_templates = TemplateText.where('user_id = ?', session[:user_id]).map { |templat| [templat.name, templat.id] }
+    text_templates = TemplateText.where('user_id = ?', session[:user_id]).map { |templat| [templat.text, templat.id] }
 
     @form_data = {
         list_strings: list_strings,
