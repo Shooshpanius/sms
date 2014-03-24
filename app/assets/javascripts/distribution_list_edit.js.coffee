@@ -14,7 +14,6 @@
         $("#title_"+stringify_msg[i].id).attr "title", stringify_msg[i].text
         $("#symbols_"+stringify_msg[i].id).text  stringify_msg[i].sms_length
         $("#parts_"+stringify_msg[i].id).text  stringify_msg[i].sms_parts
-
     false
 
 @phone_edit_show = (phone_id) ->
