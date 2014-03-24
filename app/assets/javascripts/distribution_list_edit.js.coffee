@@ -56,6 +56,13 @@ $(document).on "click", "#phone_edit_save", ->
       $("#"+phone_id).html user.phone
   false
 
+$(document).on "change", "#textTemplate", ->
+  sms_info_show $("#list_id").val(), $("#textTemplate").val()
+
+  false
+
+
+
 
 $(document).ready ($) ->
   sms_info_show $("#list_id").val(), $("#textTemplate").val()
