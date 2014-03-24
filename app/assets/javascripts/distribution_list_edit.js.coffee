@@ -11,12 +11,9 @@
     success: (msg) ->
       stringify_msg = JSON.parse(msg)
       for i of stringify_msg
-        alert stringify_msg[i].fio
+        a=stringify_msg[i].fio
+        $("#title_"+stringify_msg[i].id).attr "title", a
 
-
-
-
-#      $("#client_phone_dialog").html msg
     false
 
 @phone_edit_show = (phone_id) ->
