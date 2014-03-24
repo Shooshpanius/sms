@@ -1,5 +1,5 @@
 class DistributionListController < ApplicationController
-
+  include DistributionListHelper
 
   before_filter :is_login
 
@@ -63,17 +63,17 @@ class DistributionListController < ApplicationController
     if list_root.user_id == session[:user_id]
       list_strings = ListString.where("list_root_id = ?", params[:list_id])
       list_strings.all.each do |list_string|
-      template_text = template.text
-      template_text.tr!("###fio###", list_string.fio)
-      template_text.tr!("###dog###", list_string.dogovor)
-      template_text.tr!("###sum###", list_string.summa.to_s)
-      template_text.tr!("###dlg###", list_string.summa_dolg.to_s)
-      template_text.tr!("###dte###", date_of_next('Saturday'))
-      template_text.tr!("###dtx###", list_string.oplata_date.to_s)
+        template_text = template.text
+        template_text = template_text.gsub("###fio###", list_string.fio)
+        template_text = template_text.gsub("###dog###", list_string.dogovor)
+        template_text = template_text.gsub("###sum###", list_string.summa.to_s)
+        template_text = template_text.gsub("###dlg###", list_string.summa_dolg.to_s)
+        template_text = template_text.gsub("###dte###", date_of_next('Saturday').to_s)
+        template_text = template_text.gsub("###dtx###", list_string.oplata_date.to_s)
         array_string = {
           id: list_string.id,
           list_root_id: list_string.list_root_id,
-          template_text: text
+          text: template_text
         }
         list_array[list_string.id] = array_string
       end
