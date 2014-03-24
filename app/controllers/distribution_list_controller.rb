@@ -70,11 +70,24 @@ class DistributionListController < ApplicationController
         template_text = template_text.gsub("###dlg###", list_string.summa_dolg.to_s)
         template_text = template_text.gsub("###dte###", date_of_next('Saturday').to_s)
         template_text = template_text.gsub("###dtx###", list_string.oplata_date.to_s)
-        array_string = {
-          id: list_string.id,
-          list_root_id: list_string.list_root_id,
-          text: template_text
-        }
+        if template.translite
+          template_text = russian_translit(template_text)
+          array_string = {
+            id: list_string.id,
+            list_root_id: list_string.list_root_id,
+            sms_length: template_text.size,
+            sms_parts: (template_text.size/160.0).ceil,
+            text: template_text
+          }
+        else
+          array_string = {
+            id: list_string.id,
+            list_root_id: list_string.list_root_id,
+            sms_length: template_text.size,
+            sms_parts: (template_text.size/70.0).ceil,
+            text: template_text
+          }
+        end
         list_array[list_string.id] = array_string
       end
 

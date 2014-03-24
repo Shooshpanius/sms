@@ -11,8 +11,9 @@
     success: (msg) ->
       stringify_msg = JSON.parse(msg)
       for i of stringify_msg
-        a=stringify_msg[i].text
-        $("#title_"+stringify_msg[i].id).attr "title", a
+        $("#title_"+stringify_msg[i].id).attr "title", stringify_msg[i].text
+        $("#symbols_"+stringify_msg[i].id).text  stringify_msg[i].sms_length
+        $("#parts_"+stringify_msg[i].id).text  stringify_msg[i].sms_parts
 
     false
 
