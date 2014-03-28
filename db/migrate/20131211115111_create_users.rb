@@ -10,6 +10,9 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :active
       t.float :price_sms
       t.float :price_voice
+      t.integer :service_sms_id
+      t.integer :service_voice_id
+
 
       t.timestamps
     end
