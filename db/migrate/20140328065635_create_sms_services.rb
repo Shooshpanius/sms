@@ -8,7 +8,6 @@ class CreateSmsServices < ActiveRecord::Migration
       t.string :from
       t.string :from2
 
-
       t.timestamps
     end
   end
