@@ -6,7 +6,7 @@ class CreateSmsServices < ActiveRecord::Migration
       t.string :login
       t.string :password
       t.string :from
-      t.string :from2
+      t.string :from2d
 
       t.timestamps
     end
