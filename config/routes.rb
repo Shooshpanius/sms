@@ -8,6 +8,11 @@ Sms::Application.routes.draw do
   resources :template_text, :path => 'template_text/(:action)(.:format)'
   resources :template_voice, :path => 'template_voice/(:action)(.:format)'
 
+  namespace :admin do
+    resources :users, path: 'users/(:action)(:id)(.:format)'
+    resources :groups, path: 'sms_services/(:action)(.:format)'
+  end
+
   root 'main#index'
 
 
