@@ -58,6 +58,20 @@
         </li>
       </ul>
 
+      <% if session[:is_admin] %>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Администрирование <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/admin/users">Пользователи</a></li>
+                <li><a href="/admin/sms_services">СМС-шлюзы</a></li>
+              </ul>
+            </li>
+          </ul>
+       <% end %>
+
+
+
 <% else %>
 
 
