@@ -10,7 +10,7 @@ Sms::Application.routes.draw do
 
   namespace :admin do
     resources :users, path: 'users/(:action)(:id)(.:format)'
-    resources :groups, path: 'sms_services/(:action)(.:format)'
+    resources :sms_services, path: 'sms_services/(:action)(:id)(.:format)'
   end
 
   root 'main#index'
