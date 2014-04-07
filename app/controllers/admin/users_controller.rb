@@ -13,6 +13,15 @@ class Admin::UsersController < ApplicationController
 
   end
 
+  def edit
+
+    user = User.find(params[:id])
+
+    @form_data = {
+        user: user
+    }
+
+  end
 
   private
   def is_login
