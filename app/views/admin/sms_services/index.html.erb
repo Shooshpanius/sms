@@ -1,3 +1,28 @@
 <%= javascript_include_tag "main" %>
 <%= javascript_include_tag "admin/sms_services" %>
 
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th class="col-md-1">#</th>
+    <th>Тип сервиса</th>
+    <th>Логин</th>
+    <th class="col-md-1">Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @form_data[:sms_services].each.with_index do |sms_service, index| %>
+      <tr id="c_<%= sms_service.id %>">
+        <td><%= sms_service.id %></td>
+        <td><%= sms_service.service_type %></td>
+        <td><%= sms_service.login %></td>
+        <td>
+          <a href="/admin/users/edit/<%= user.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+        </td>
+      </tr>
+  <% end %>
+
+
+  </tbody>
+</table>
