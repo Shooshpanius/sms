@@ -6,11 +6,9 @@ class Admin::UsersController < ApplicationController
   def index
 
     users = User.all
-    sms_services = SmsService.all().map { |sms_service| [sms_service.name, sms_service.id] }
 
     @form_data = {
-        users: users,
-        sms_services: sms_services
+        users: users
     }
 
   end
@@ -18,9 +16,11 @@ class Admin::UsersController < ApplicationController
   def edit
 
     user = User.find(params[:id])
+    sms_services = SmsService.all().map { |sms_service| [sms_service.name, sms_service.id] }
 
     @form_data = {
-        user: user
+        user: user,
+        sms_services: sms_services
     }
 
   end
