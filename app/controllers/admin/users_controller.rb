@@ -6,9 +6,11 @@ class Admin::UsersController < ApplicationController
   def index
 
     users = User.all
+    sms_services = SmsService.all().map { |sms_service| [sms_service.name, sms_service.id] }
 
     @form_data = {
-        users: users
+        users: users,
+        sms_services: sms_services
     }
 
   end

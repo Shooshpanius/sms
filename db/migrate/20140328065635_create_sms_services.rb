@@ -2,6 +2,7 @@ class CreateSmsServices < ActiveRecord::Migration
   def change
     create_table :sms_services do |t|
 
+      t.integer :name
       t.integer :service_type
       t.string :login
       t.string :password
