@@ -5,23 +5,17 @@ class Admin::SmsServicesController < ApplicationController
 
 
   def index
-
     sms_services = SmsService.all
-
     @form_data = {
         sms_services: sms_services
     }
-
   end
 
   def edit
-
     sms_service = SmsService.find(params[:id])
-
     @form_data = {
         sms_service: sms_service
     }
-
   end
 
   private
