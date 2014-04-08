@@ -17,7 +17,16 @@
       <tr id="c_<%= sms_service.id %>">
         <td><%= sms_service.id %></td>
         <td><%= sms_service.name %></td>
-        <td><%= sms_service.service_type %></td>
+        <td>
+          <% case sms_service.service_type %>
+              <% when 0 %>
+                ---
+              <% when 1 %>
+                SMS Aero
+              <% else %>
+                NOT FOUND
+          <% end %>
+        </td>
         <td><%= sms_service.login %></td>
         <td>
           <a href="/admin/sms_services/edit/<%= sms_service.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
