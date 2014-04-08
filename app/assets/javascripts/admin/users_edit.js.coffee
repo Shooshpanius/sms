@@ -32,7 +32,7 @@ $(document).ready ($) ->
       price_voice: ''
 
     submitHandler: () ->
-      queryString = $("#sms_user_edit").serialize()
+      queryString = $("#sms_service_edit").serialize()
       $.ajax
         url: '/admin/users/srv_user_edit'
         type: 'POST'
