@@ -5,6 +5,7 @@
   <thead>
   <tr>
     <th class="col-md-1">#</th>
+    <th>Наименование</th>
     <th>Тип сервиса</th>
     <th>Логин</th>
     <th class="col-md-1">Действия</th>
@@ -15,10 +16,11 @@
   <% @form_data[:sms_services].each.with_index do |sms_service, index| %>
       <tr id="c_<%= sms_service.id %>">
         <td><%= sms_service.id %></td>
+        <td><%= sms_service.name %></td>
         <td><%= sms_service.service_type %></td>
         <td><%= sms_service.login %></td>
         <td>
-          <a href="/admin/users/edit/<%= user.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+          <a href="/admin/sms_services/edit/<%= sms_service.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
         </td>
       </tr>
   <% end %>

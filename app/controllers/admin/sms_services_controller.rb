@@ -14,6 +14,15 @@ class Admin::SmsServicesController < ApplicationController
 
   end
 
+  def edit
+
+    sms_service = SmsService.find(params[:id])
+
+    @form_data = {
+        sms_service: sms_service
+    }
+
+  end
 
   private
   def is_login
