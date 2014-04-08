@@ -3,7 +3,14 @@
 
 
 
-<form class="form-horizontal" role="form" id="filter_form" name="filter_form">
+<form class="form-horizontal" role="form" id="sms_service_edit" name="sms_service_edit">
+
+  <div class="form-group hidden">
+    <label for="user_id" class="col-sm-2 control-label">user_id</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="user_id" id="user_id" value="<%= @form_data[:user].id  %>">
+    </div>
+  </div>
 
   <div class="form-group">
     <label for="login" class="col-sm-2 control-label">Login</label>
@@ -37,13 +44,6 @@
     <label for="user_login" class="col-sm-2 control-label">qiwi</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" name="qiwi" id="qiwi" value="<%= @form_data[:user].qiwi  %>">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="user_login" class="col-sm-2 control-label">Login</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="user_login" id="user_login" value="<%= @form_data[:user].login  %>">
     </div>
   </div>
 
@@ -102,7 +102,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-success" onclick="save_user()">Сохранить</button>
+      <button type="submit" class="btn btn-success">Сохранить</button>
       <button type="button" class="btn btn-info" >Отменить</button>
     </div>
   </div>
