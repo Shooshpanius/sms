@@ -8,8 +8,8 @@
     <th class="col-md-1">#</th>
     <th>Логин</th>
     <th>ФИО</th>
-    <th>Админ</th>
-    <th>СМС-шлюз</th>
+    <th>E-mail</th>
+    <th class="col-md-1">Статус</th>
     <th class="col-md-1">Действия</th>
   </tr>
   </thead>
@@ -20,8 +20,8 @@
         <td><%= user.id %></td>
         <td><%= user.login %></td>
         <td><%= user.username %></td>
-        <td><%= user.adm %></td>
-        <td><%= user.service_sms_id %></td>
+        <td><%= user.email %></td>
+        <td><%= (user.adm)?'Admin':'' %> <%= (user.active)?'Active':'' %></td>
         <td>
           <a href="/admin/users/edit/<%= user.id %>" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
         </td>
