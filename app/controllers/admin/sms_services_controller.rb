@@ -18,6 +18,19 @@ class Admin::SmsServicesController < ApplicationController
     }
   end
 
+  def srv_service_edit
+    SmsService.update(
+        params[:service_id],
+        name: params[:name],
+        service_type: params[:service_type],
+        login: params[:login],
+        password: params[:password],
+        from: params[:from],
+        from2d: params[:from2d]
+    )
+    render nothing: true
+  end
+
   private
   def is_login
     if !session[:is_login]

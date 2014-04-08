@@ -4,6 +4,8 @@ $(document).ready ($) ->
 
   $("#sms_service_edit").validate
     rules:
+      service_id:
+        required: true
       name:
         required: true
       service_type:
@@ -26,10 +28,10 @@ $(document).ready ($) ->
     submitHandler: () ->
       queryString = $("#sms_service_edit").serialize()
       $.ajax
-        url: '/sms_services/srv_service_edit'
+        url: '/admin/sms_services/srv_service_edit'
         type: 'POST'
         data: queryString
         success: () ->
-          location.replace '/sms_services'
+          location.replace '/admin/sms_services'
 
       false
