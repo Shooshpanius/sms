@@ -33,8 +33,17 @@
 
   <span class="pull-right">
     Отправить отмеченные:
+    <% if @form_data[:is_sms]==1 %>
         <button class="btn btn-xs btn-success" type="button"><i class="glyphicon glyphicon-envelope"></i></button>
+    <% else %>
+        <button class="btn btn-xs btn-success" type="button" disabled="disabled"><i class="glyphicon glyphicon-envelope"></i></button>
+    <% end %>
+
+    <% if @form_data[:is_voice]==1 %>
         <button class="btn btn-xs btn-info" type="button"><i class="glyphicon glyphicon-music"></i></button>
+    <% else %>
+        <button class="btn btn-xs btn-info" type="button" disabled="disabled"><i class="glyphicon glyphicon-music"></i></button>
+    <% end %>
   </span>
 
   </div>
