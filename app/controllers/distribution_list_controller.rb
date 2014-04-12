@@ -21,11 +21,16 @@ class DistributionListController < ApplicationController
     list_id = params[:id]
     list_strings = ListString.get_strings(list_id, session[:user_id])
     text_templates = TemplateText.where('user_id = ?', session[:user_id]).map { |templat| [templat.text, templat.id] }
+    user_data = User.find(session[:user_id])
+    is_sms = (user_data.service_sms_id==1)?0:1
+    is_voice = (user_data.service_voice_id==1)?0:1
 
     @form_data = {
         list_strings: list_strings,
         list_id: list_id,
-        text_templates: text_templates
+        text_templates: text_templates,
+        is_sms: is_sms,
+        is_voice: is_voice
     }
   end
 
