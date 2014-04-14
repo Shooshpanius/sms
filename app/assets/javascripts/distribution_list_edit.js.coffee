@@ -46,7 +46,7 @@
     async: false
     data: {
       sms_str_data:ser_id,
-      sms_str_id:"#s_"+str_id
+      textTemplate:$("#textTemplate").val()
 
     }
     success: (msg) ->
