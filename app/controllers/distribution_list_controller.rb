@@ -61,7 +61,6 @@ class DistributionListController < ApplicationController
   end
 
   def srv_sms_info_show
-
     template = TemplateText.find(params[:textTemplate])
     list_root = ListRoot.find(params[:list_id])
     list_array = Hash.new
@@ -95,15 +94,21 @@ class DistributionListController < ApplicationController
         end
         list_array[list_string.id] = array_string
       end
+    end
+    render text: JSON.generate(list_array)
+  end
 
+  def send_sms_str
+    a = ''
+    params[:sms_str_data].each do |sms_str|
+      a = a + sms_str[1]['name']
 
     end
 
 
 
-    render text: JSON.generate(list_array)
+    render text: a
   end
-
 
   private
   def is_login

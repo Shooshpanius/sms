@@ -38,6 +38,22 @@
           $(this).remove()
     false
 
+@send_sms_str = (str_id) ->
+  ser_id = $("#s_" + str_id+" :input").serializeArray()
+  $.ajax
+    url: '/distribution_list/send_sms_str'
+    type: 'POST'
+    async: false
+    data: {
+      sms_str_data:ser_id,
+      sms_str_id:"#s_"+str_id
+
+    }
+    success: (msg) ->
+
+  false
+
+
 $(document).on "click", "#phone_edit_save", ->
   phone_id = $("#phone_id").val()
   main_phone = $("#main_phone").val()

@@ -64,7 +64,7 @@
     <tbody>
         <% @form_data[:list_strings].each.with_index do |list_string, index| %>
 
-            <tr id="s_<%= list_string.id %>">
+            <tr id="s_<%= list_string.id %>" name="s_<%= list_string.id %>" >
               <td><%= index+1 %></td>
               <td><%= list_string.fio %></td>
               <td><%= list_string.dogovor %></td>
@@ -74,7 +74,7 @@
               <td>
                 <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
                 <% client[0].client_phones.all.each do |phone| %>
-                    <input type="checkbox" id="send_<%= phone.id %>" name="send_array[]" style="margin-right: 10px; float: left">
+                    <input type="checkbox" id="c_<%= phone.id %>" name="c_<%= phone.id %>" style="margin-right: 10px; float: left">
                     <div id="<%= phone.id %>" data-toggle="modal" data-target="#mPhoneEdit" onclick="phone_edit_show(<%= phone.id %>)" style="cursor: pointer; float: left" >
                       <%if phone.replace%>
                           <span class="label label-danger"><%= phone.replace_phone %></span>
@@ -88,7 +88,7 @@
               <td>
                 <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
                 <% client[0].relatives.all.each do |phone| %>
-                    <input type="checkbox" id="send_r_<%= phone.id %>" name="send_array[]" style="margin-right: 10px; float: left">
+                    <input type="checkbox" id="p_<%= phone.id %>" name="p_<%= phone.id %>" style="margin-right: 10px; float: left">
                     <div id="<%= phone.id %>" style="float: left" >
 
                      <span><%= phone.phone %></span>
@@ -100,7 +100,7 @@
               </td>
               <td>
                 <% if @form_data[:is_sms]==1 %>
-                    <button type="button" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-envelope"></i></button>
+                    <button type="button" class="btn btn-success btn-xs" onclick="send_sms_str(<%= list_string.id %>)"><i class="glyphicon glyphicon-envelope"></i></button>
                 <% else %>
                     <button type="button" class="btn btn-success btn-xs" disabled="disabled"><i class="glyphicon glyphicon-envelope"></i></button>
                 <% end %>
