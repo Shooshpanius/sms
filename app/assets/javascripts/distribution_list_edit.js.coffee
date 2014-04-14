@@ -46,13 +46,29 @@
     async: false
     data: {
       sms_str_data:ser_id,
-      textTemplate:$("#textTemplate").val()
+      textTemplate:$("#textTemplate").val(),
+      list_id:$("#list_id").val()
 
     }
     success: (msg) ->
 
   false
 
+@send_sms_table = ->
+  ser_id = $("#table_d"+" :input").serializeArray()
+  $.ajax
+    url: '/distribution_list/send_sms_str'
+    type: 'POST'
+    async: false
+    data: {
+      sms_str_data:ser_id,
+      textTemplate:$("#textTemplate").val(),
+      list_id:$("#list_id").val()
+
+    }
+    success: (msg) ->
+
+  false
 
 $(document).on "click", "#phone_edit_save", ->
   phone_id = $("#phone_id").val()

@@ -34,7 +34,7 @@
   <span class="pull-right">
     Отправить отмеченные:
     <% if @form_data[:is_sms]==1 %>
-        <button class="btn btn-xs btn-success" type="button"><i class="glyphicon glyphicon-envelope"></i></button>
+        <button class="btn btn-xs btn-success" type="button" onclick="send_sms_table()"><i class="glyphicon glyphicon-envelope"></i></button>
     <% else %>
         <button class="btn btn-xs btn-success" type="button" disabled="disabled"><i class="glyphicon glyphicon-envelope"></i></button>
     <% end %>
@@ -61,7 +61,7 @@
       <th>Действия</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="table_d" name="table_d">
         <% @form_data[:list_strings].each.with_index do |list_string, index| %>
 
             <tr id="s_<%= list_string.id %>" name="s_<%= list_string.id %>" >
