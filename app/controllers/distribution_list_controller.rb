@@ -100,7 +100,7 @@ class DistributionListController < ApplicationController
 
   def send_sms_str
 
-    text_template = TemplateText.find(params[:textTemplate])
+    text_template = TemplateText.where('user_id = ? and id = ?', session[:user_id], params[:textTemplate]).first!
     params[:sms_str_data].each do |sms_str|
       phone_code_str = sms_str[1]['name']
 
@@ -108,8 +108,17 @@ class DistributionListController < ApplicationController
       case phone_code_str[0]
         when 'c'
           phone_code = phone_code_str.delete "c_"
+          phone = ClientPhone.find(phone_code)
+          client = Client.find(phone.client_id)
+          if client.user_id == session[:user_id]
+            list_string = ListString.where('list_root_id = ? and dogovor = ?', params[:list_id], client.dogovor)
+            SmsData.create(
 
 
+
+            )
+
+          end
 
         when 'p'
           phone_code = phone_code_str.delete "p_"
