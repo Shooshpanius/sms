@@ -118,7 +118,7 @@ class DistributionListController < ApplicationController
                 sms_service_id: user.service_sms_id,
                 phone: phone.phone,
                 text: text_template.text,
-                summa: price_sms,
+                summa: user.price_sms,
                 id_in_service: 0
             )
 

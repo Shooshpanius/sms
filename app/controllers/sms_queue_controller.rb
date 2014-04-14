@@ -7,7 +7,7 @@ class SmsQueueController < ApplicationController
     sms_queue = SmsData.where('user_id = ? and id_in_service = ?', session[:user_id], 0)
 
     @form_data = {
-        my_lists: my_lists
+        sms_queue: sms_queue
     }
 
   end
