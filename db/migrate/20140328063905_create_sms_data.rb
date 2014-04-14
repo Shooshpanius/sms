@@ -3,6 +3,7 @@ class CreateSmsData < ActiveRecord::Migration
     create_table :sms_data do |t|
 
       t.belongs_to :user
+      t.belongs_to :client
       t.decimal :sms_service_id
       t.decimal :phone, :precision => 10
       t.text :text

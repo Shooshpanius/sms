@@ -99,7 +99,7 @@ class DistributionListController < ApplicationController
   end
 
   def send_sms_str
-
+    user = User.find(session[:user_id])
     text_template = TemplateText.where('user_id = ? and id = ?', session[:user_id], params[:textTemplate]).first!
     params[:sms_str_data].each do |sms_str|
       phone_code_str = sms_str[1]['name']
@@ -113,9 +113,12 @@ class DistributionListController < ApplicationController
           if client.user_id == session[:user_id]
             list_string = ListString.where('list_root_id = ? and dogovor = ?', params[:list_id], client.dogovor)
             SmsData.create(
-
-
-
+                user_id: 	user.id,
+                client_id: 	client.id,
+                sms_service_id: user.service_sms_id,
+                phone: phone.phone,
+                text: text_template.text,
+                summa: price_sms
             )
 
           end
