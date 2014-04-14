@@ -99,15 +99,24 @@ class DistributionListController < ApplicationController
   end
 
   def send_sms_str
-    a = ''
+
     params[:sms_str_data].each do |sms_str|
-      a = a + sms_str[1]['name']
+      phone_code_str = sms_str[1]['name']
+      case phone_code_str[0]
+        when 'c'
+          phone_code = phone_code_str.delete "c_"
+
+        when 'p'
+          phone_code = phone_code_str.delete "p_"
+
+      end
+
 
     end
 
 
 
-    render text: a
+    render :nothing => true
   end
 
   private
