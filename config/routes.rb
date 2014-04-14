@@ -7,6 +7,7 @@ Sms::Application.routes.draw do
   resources :client, :path => 'client/(:action)(.:format)'
   resources :template_text, :path => 'template_text/(:action)(.:format)'
   resources :template_voice, :path => 'template_voice/(:action)(.:format)'
+  resources :sms_queue, :path => 'sms_queue/(:action)(.:format)'
 
   namespace :admin do
     resources :users, path: 'users/(:action)(:id)(.:format)'
