@@ -10,7 +10,6 @@ class SmsQueueController < ApplicationController
   end
 
   def srv_delete_sms_queue
-
     SmsData.destroy_all(
         :user_id => session[:user_id],
         :id_in_service => 0

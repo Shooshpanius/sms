@@ -19,4 +19,23 @@ module DistributionListHelper
     return date + delta
   end
 
+
+  def text_to_tpl(text_template, list_string)
+    text = text_template.text
+    text = text.gsub("###fio###", list_string.fio)
+    text = text.gsub("###dog###", list_string.dogovor)
+    text = text.gsub("###sum###", list_string.summa.to_s)
+    text = text.gsub("###dlg###", list_string.summa_dolg.to_s)
+    text = text.gsub("###dte###", date_of_next('Saturday').to_s)
+    text = text.gsub("###dtx###", list_string.oplata_date.to_s)
+
+    if text_template.translite
+      text = russian_translit(text)
+    end
+
+    return text
+
+  end
+
+
 end
