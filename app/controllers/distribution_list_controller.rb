@@ -109,6 +109,11 @@ class DistributionListController < ApplicationController
         when 'c'
           phone_code = phone_code_str.delete "c_"
           phone = ClientPhone.find(phone_code)
+          if phone.replace
+            phone_actual = phone.replace_phone
+          else
+            phone_actual = phone.phone
+          end
           client = Client.find(phone.client_id)
           if client.user_id == session[:user_id]
             list_string = ListString.where('list_root_id = ? and dogovor = ?', params[:list_id], client.dogovor).first!
@@ -116,7 +121,7 @@ class DistributionListController < ApplicationController
                 user_id: 	user.id,
                 client_id: 	client.id,
                 sms_service_id: user.service_sms_id,
-                phone: phone.phone,
+                phone: phone_actual,
                 text: text_to_tpl(text_template, list_string),
                 summa: user.price_sms,
                 id_in_service: 0
