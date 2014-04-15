@@ -115,7 +115,7 @@ class DistributionListController < ApplicationController
             phone_actual = phone.phone
           end
           client = Client.find(phone.client_id)
-          if client.user_id == session[:user_id]
+          if client.user_id == session[:user_id] && phone.phone_type == 1
             list_string = ListString.where('list_root_id = ? and dogovor = ?', params[:list_id], client.dogovor).first!
             SmsData.create(
                 user_id: 	user.id,
@@ -131,7 +131,21 @@ class DistributionListController < ApplicationController
 
         when 'p'
           phone_code = phone_code_str.delete "p_"
+          phone = Relative.find(phone_code)
 
+          client = Client.find(phone.client_id)
+          if client.user_id == session[:user_id] && phone.phone_type == 1
+            list_string = ListString.where('list_root_id = ? and dogovor = ?', params[:list_id], client.dogovor).first!
+            SmsData.create(
+                user_id: 	user.id,
+                client_id: 	client.id,
+                sms_service_id: user.service_sms_id,
+                phone: phone.phone,
+                text: text_to_tpl(text_template, list_string),
+                summa: user.price_sms,
+                id_in_service: 0
+            )
+          end
       end
 
 
