@@ -12,10 +12,10 @@ class Cron::SendSmsController < ApplicationController
       if sms_service.service_type == 1
 
         responce = send_sms_to_smsaero(sms, sms_service).body
+
         if responce.include? '=accepted'
-          SmsService.update(
-            sms.id,
-            sms_service_id = responce.delete '=accepted'
+          SmsData.update(sms.id,
+                            sms_service_id: responce.delete '=accepted'
           )
 
         end
