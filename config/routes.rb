@@ -14,6 +14,11 @@ Sms::Application.routes.draw do
     resources :sms_services, path: 'sms_services/(:action)(:id)(.:format)'
   end
 
+  namespace :cron do
+    resources :send_sms, path: 'send_sms/(:action)(:id)(.:format)'
+  end
+
+
   root 'main#index'
 
 
