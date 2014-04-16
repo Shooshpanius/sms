@@ -3,8 +3,7 @@ class Cron::SendSmsController < ApplicationController
   include Cron::SendSmsHelper
 
   def index
-    x = ''
-    send_params = {}
+
     sms_array = SmsData.where('id_in_service = ?', 0)
     sms_array.each do |sms|
 
@@ -26,8 +25,8 @@ class Cron::SendSmsController < ApplicationController
 
     end
 
-    render text: x
-
+    # render text: x
+    render nothing: true
   end
 
 end
