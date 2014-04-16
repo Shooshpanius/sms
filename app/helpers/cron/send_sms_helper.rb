@@ -21,7 +21,7 @@ module Cron::SendSmsHelper
         'to' => '7'+sms.phone.to_s,
         'text' => sms.text,
         'from' => sms_service.from,
-        'from2' => '79250115444'
+        'from2' => sms_service.from2d
     }
 
 
