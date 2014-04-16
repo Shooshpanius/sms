@@ -7,7 +7,7 @@ class Cron::SendSmsController < ApplicationController
     sms_array = SmsData.where('id_in_service = ?', 0)
     sms_array.each do |sms|
 
-      sms_service = SmsService.find(sms_service_id)
+      sms_service = SmsService.find(sms.sms_service_id)
 
       if sms_service.service_type == 1
 
