@@ -15,8 +15,9 @@ class Cron::SendSmsController < ApplicationController
         id_in_service = responce.delete '=accepted'
 
         if responce.include? '=accepted'
-          SmsData.update(sms.id,
-                         id_in_service: id_in_service
+          SmsData.update(
+              sms.id,
+              id_in_service: id_in_service
           )
 
         end
