@@ -13,3 +13,15 @@
         location.reload()
 
     false
+
+
+@send_sms_queue = ->
+  if confirm('Отправить очередь?')
+    $.ajax
+      url: '/cron/send_sms'
+      type: 'GET'
+      async: false
+      success: (msg) ->
+        location.reload()
+
+    false
