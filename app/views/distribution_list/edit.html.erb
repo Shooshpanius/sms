@@ -89,7 +89,7 @@
                 <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
                 <% client[0].relatives.all.each do |phone| %>
                     <input type="checkbox" id="p_<%= phone.id %>" name="p_<%= phone.id %>" style="margin-right: 10px; float: left">
-                    <div id="<%= phone.id %>" style="float: left" >
+                    <div id="pp_<%= phone.id %>" style="float: left" >
 
                      <span><%= phone.phone %></span>
                      <i class="glyphicon glyphicon-question-sign" style="cursor: pointer;" title="<%= phone.fio %> (<%= phone.relationship %>)"></i>
