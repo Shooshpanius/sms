@@ -21,8 +21,19 @@ module DistributionListHelper
 
 
   def text_to_tpl(text_template, list_string)
+
+    fio_array = list_string.fio.split(' ')
+    fio_array.each.with_index do |str, index|
+      if index != 0
+        fio_array[index] = str[0].capitalize+'.'
+      end
+    end
+    fio_init = fio_array.join(' ')
+
+
     text = text_template.text
     text = text.gsub("###fio###", list_string.fio)
+    text = text.gsub("###ini###", fio_init)
     text = text.gsub("###dog###", list_string.dogovor)
     text = text.gsub("###sum###", list_string.summa.to_s)
     text = text.gsub("###dlg###", list_string.summa_dolg.to_s)

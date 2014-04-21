@@ -67,8 +67,16 @@ class DistributionListController < ApplicationController
     if list_root.user_id == session[:user_id]
       list_strings = ListString.where("list_root_id = ?", params[:list_id])
       list_strings.all.each do |list_string|
+        fio_array = list_string.fio.split(' ')
+        fio_array.each.with_index do |str, index|
+          if index != 0
+            fio_array[index] = str[0].capitalize+'.'
+          end
+        end
+        fio_init = fio_array.join(' ')
         template_text = template.text
         template_text = template_text.gsub("###fio###", list_string.fio)
+        template_text = template_text.gsub("###ini###", fio_init)
         template_text = template_text.gsub("###dog###", list_string.dogovor)
         template_text = template_text.gsub("###sum###", list_string.summa.to_s)
         template_text = template_text.gsub("###dlg###", list_string.summa_dolg.to_s)
