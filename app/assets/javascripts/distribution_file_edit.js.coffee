@@ -44,8 +44,8 @@
         required: true
       addr:
         required: true
-      contact:
-        required: true
+#      contact:
+#        required: true
       date_oplata:
         required: true
 
@@ -58,7 +58,7 @@
       sum_main: ''
       sum_plat: ''
       addr: ''
-      contact: ''
+#      contact: ''
       date_oplata: ''
 
     submitHandler: () ->

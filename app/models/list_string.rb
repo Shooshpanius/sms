@@ -1,3 +1,4 @@
+# coding: utf-8
 class ListString < ActiveRecord::Base
 
 
@@ -83,6 +84,8 @@ class ListString < ActiveRecord::Base
           s_fio = ''
       end
 
+      next if s_fio.nil? || s_fio.match('ФИО Клиента')
+
 
       case params[:dogovor]
         when 's_00'
@@ -141,6 +144,7 @@ class ListString < ActiveRecord::Base
           dogovor = ''
       end
 
+      # next if dogovor.to_i != dogovor
 
       case params[:phone]
         when 's_00'
@@ -198,6 +202,11 @@ class ListString < ActiveRecord::Base
         else
           phone = ''
       end
+
+      if phone.present? && !phone.nil? && phone!='' && phone.size>1
+        phone.gsub!(/(\+7)/, '').gsub!(/\(*/, '').gsub!(/\)*/, '').gsub!(/\-*/, '')
+      end
+ #
 
       case params[:sum_main]
         when 's_00'
@@ -566,8 +575,10 @@ class ListString < ActiveRecord::Base
             :dogovor => dogovor,
             :adress => addr
           )
-          phone_array = phone.scan(/[[:word:]]+/)
-          ClientPhone.update_phones(phone_array, client_id.id)
+          if phone != nil
+            phone_array = phone.scan(/[[:word:]]+/)
+            ClientPhone.update_phones(phone_array, client_id.id)
+          end
           Relative.update_phones(contact, client_id.id)
 
         else
@@ -578,8 +589,10 @@ class ListString < ActiveRecord::Base
               :dogovor => dogovor,
               :adress => addr
           )
-          phone_array = phone.scan(/[[:word:]]+/)
-          ClientPhone.update_phones(phone_array, client[0].id)
+          if phone != nil
+            phone_array = phone.scan(/[[:word:]]+/)
+            ClientPhone.update_phones(phone_array, client[0].id)
+          end
           Relative.update_phones(contact, client[0].id)
 
         end
