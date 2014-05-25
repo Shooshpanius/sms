@@ -71,10 +71,12 @@
               <td><%= list_string.summa %></td>
               <td><%= list_string.summa_dolg %></td>
               <td
-                <% if Date.strptime(list_string.oplata_date.to_s,"%Y-%m-%d") < Date.today %>
-                    class="danger"
-                <% elsif Date.strptime(list_string.oplata_date.to_s,"%Y-%m-%d") == Date.today %>
-                    class="warning"
+                <% if !list_string.oplata_date.nil? %>
+                    <% if Date.strptime(list_string.oplata_date.to_s,"%Y-%m-%d") < Date.today %>
+                        class="danger"
+                    <% elsif Date.strptime(list_string.oplata_date.to_s,"%Y-%m-%d") == Date.today %>
+                        class="warning"
+                    <% end %>
                 <% end %>
               >
                 <%= list_string.oplata_date %>
