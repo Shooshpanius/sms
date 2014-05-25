@@ -379,6 +379,14 @@ class ListString < ActiveRecord::Base
           oplata_date = ''
       end
 
+      if oplata_date.size == 8
+
+        oplata_date = oplata_date[0..5]+'20'+oplata_date[6..7]
+
+
+      end
+
+
       case params[:addr]
         when 's_00'
           addr = file_string.s_00
