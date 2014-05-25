@@ -203,10 +203,13 @@ class ListString < ActiveRecord::Base
           phone = ''
       end
 
-      if phone.present? && !phone.nil? && phone!='' && phone.size>1 && phone!='Телефоны'
-        phone.gsub!(/(\+7)/, '').gsub!(/\(*/, '').gsub!(/\)*/, '').gsub!(/\-*/, '')
+      begin
+        # if phone.present? && !phone.nil? && phone!='' && phone.size>1 && phone!='Телефоны'
+          phone.gsub!(/(\+7)/, '').gsub!(/\(*/, '').gsub!(/\)*/, '').gsub!(/\-*/, '')
+        # end
+      rescue
+
       end
- #
 
       case params[:sum_main]
         when 's_00'
