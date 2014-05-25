@@ -70,7 +70,15 @@
               <td><%= list_string.dogovor %></td>
               <td><%= list_string.summa %></td>
               <td><%= list_string.summa_dolg %></td>
-              <td><%= list_string.oplata_date %></td>
+              <td
+                <% if Date.strptime(list_string.oplata_date.to_s,"%Y-%m-%d") < Date.today %>
+                    class="danger"
+                <% elsif Date.strptime(list_string.oplata_date.to_s,"%Y-%m-%d") == Date.today %>
+                    class="warning"
+                <% end %>
+              >
+                <%= list_string.oplata_date %>
+              </td>
               <td>
                 <% client = Client.where('dogovor = ? and user_id = ? ', list_string.dogovor, session[:user_id]) %>
                 <% client[0].client_phones.all.each do |phone| %>
