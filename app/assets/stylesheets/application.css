@@ -10,8 +10,8 @@
  *
  *= require_self
  *= require bootstrap
- *= require jquery.ui.datepicker
- *= require jquery.ui.slider
+ *= require jquery-ui/datepicker
+ *= require jquery-ui/slider
  *= require bootstrap-wysihtml5
  *= require_tree .
  */
