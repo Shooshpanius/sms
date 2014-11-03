@@ -15,7 +15,7 @@
  *= require_tree .
  */
 
-@import "bootstrap-sass";
+@import "bootstrap";
 
 
 @font-face {
