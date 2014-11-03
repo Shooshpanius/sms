@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require jquery.validate
 //= require additional-methods
-//= require bootstrap
+//= require bootstrap-sass
 //= require bootstrap-wysiwyg
 //= require jquery-hotkeys
 //= require bootstrap-wysihtml5
