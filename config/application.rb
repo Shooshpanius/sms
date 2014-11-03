@@ -10,6 +10,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+config.assets.paths += %W("#{Rails.root}/vendor/assets/fonts")
+
 module Sms
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
