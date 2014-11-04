@@ -7,13 +7,13 @@ gem 'rails', '4.2.0.beta1'
 gem 'mysql2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0.0.beta1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -64,8 +64,7 @@ gem 'unicorn'
 # Use Capistrano for deployment
 gem 'capistrano' , '~> 2.15'
 gem 'rvm-capistrano'
-gem 'sprockets-rails'
-gem 'railties'
+
 #gem 'capistrano/bundler'
 
 # Use debugger
