@@ -64,7 +64,8 @@ gem 'unicorn'
 # Use Capistrano for deployment
 gem 'capistrano' , '~> 2.15'
 gem 'rvm-capistrano'
-
+gem 'sprockets-rails'
+gem 'railties'
 #gem 'capistrano/bundler'
 
 # Use debugger
