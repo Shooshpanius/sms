@@ -21,4 +21,5 @@
 //= require jquery-hotkeys
 //= require bootstrap-wysihtml5
 //= require jquery.maskedinput
+//= require md5
 //= require_self

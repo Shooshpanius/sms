@@ -3,17 +3,13 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ($) ->
+
   $("#login_form").validate
     rules:
       login:
         required: true
-
-
       password:
         required: true
-        depends: (element) ->
-          $.md5 $("#password:val")
-
 
     errorClass: "input_error"
     errorElement: "em"
@@ -21,8 +17,12 @@ $(document).ready ($) ->
       login: ""
       password: ""
 
+
     submitHandler: (form) ->
-      queryString = $("#login_form").serialize()
+      queryString = {
+        login: $('#login').val(),
+        password: CryptoJS.MD5($('#password').val()).toString()
+      }
       $.ajax
         url: "/login/srv_check_login"
         type: "POST"
