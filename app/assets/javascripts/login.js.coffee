@@ -11,6 +11,8 @@ $(document).ready ($) ->
 
       password:
         required: true
+        depends: (element) ->
+          $.md5 $("#password:val")
 
 
     errorClass: "input_error"
