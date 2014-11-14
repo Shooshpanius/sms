@@ -23,7 +23,7 @@ def is_login
 
 
   if user.nil? or user.pwd != params[:password]
-    render :nothing => true
+    render :text => 'not ok'
   else
 
   end
