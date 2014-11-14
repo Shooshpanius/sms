@@ -1,5 +1,7 @@
 Sms::Application.routes.draw do
 
+  get 'mobile/get_unsend'
+
   get "distribution_list/index"
   resources :login, :path => 'login/(:action)(.:format)'
   resources :distribution_file, :path => 'distribution_file/(:action)(.:format)'
