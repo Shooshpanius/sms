@@ -21,6 +21,7 @@ def is_login
 
   user = User.where('login = ? and pwd = ?', params[:login], params[:password])[0]
 
+
   if user.nil? or user. != params[:password]
     render :nothing => true
   else
