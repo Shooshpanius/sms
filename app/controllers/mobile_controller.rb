@@ -5,6 +5,7 @@ class MobileController < ApplicationController
   def get_unsend
 
     sms_queue = SmsData.where('user_id = ? and id_in_service = ?', @user.id, 0)
+    sms_queue = '{"sys":'+sms_queue.to_json+'}'
     @form_data = {
         sms_queue: sms_queue
     }
