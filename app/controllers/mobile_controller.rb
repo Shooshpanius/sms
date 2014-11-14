@@ -22,7 +22,7 @@ def is_login
   @user = User.where('login = ? and pwd = ?', params[:login], params[:password])[0]
 
 
-  if user.nil? or user.pwd != params[:pwd]
+  if @user.nil? or @user.pwd != params[:pwd]
     render :text => params[:login].to_s+' | '+params[:pwd].to_s+' | '+@user.pwd.to_s
   else
 
