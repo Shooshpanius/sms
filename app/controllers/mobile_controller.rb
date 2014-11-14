@@ -4,7 +4,7 @@ class MobileController < ApplicationController
 
   def get_unsend
 
-    sms_queue = SmsData.where('user_id = ? and id_in_service = ?', params[:login], 0)
+    sms_queue = SmsData.where('user_id = ? and id_in_service = ?', @user.pwd, 0)
     @form_data = {
         sms_queue: sms_queue
     }
@@ -19,13 +19,13 @@ end
 private
 def is_login
 
-  user = User.where('login = ? and pwd = ?', params[:login], params[:password])[0]
-  render :text => params[:login].to_s+' | '+params[:password].to_s
+  @user = User.where('login = ? and pwd = ?', params[:login], params[:password])[0]
 
-  # if user.nil? or user.pwd != params[:password]
-  #
-  # else
-  #
-  # end
+
+  if user.nil? or user.pwd != params[:pwd]
+    render :text => params[:login].to_s+' | '+params[:pwd].to_s+' | '+@user.pwd.to_s
+  else
+
+  end
 
 end
