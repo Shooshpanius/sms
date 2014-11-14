@@ -9,6 +9,8 @@ class MobileController < ApplicationController
         sms_queue: sms_queue
     }
 
+    render json: sms_queue
+
   end
 
 end
