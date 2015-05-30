@@ -63,7 +63,7 @@ gem 'spreadsheet'
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano' , '~> 2.15'
+gem 'capistrano' , '~> 2.15',  require: false
 gem 'rvm-capistrano'
 
 #gem 'capistrano/bundler'
